@@ -1,0 +1,122 @@
+/* ===== RESET DASAR ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #140b25;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  text-align: center;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #e03b3b, #9333ea);
+  padding: 15px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar .logo-nav {
+  position: absolute;
+  left: 45px;
+}
+
+.navbar .logo-nav-img {
+  width: 40px;
+  height: auto;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  opacity: 0.8;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1b0f27;
+  position: relative;
+  padding-top: 100px;
+}
+
+.center-content {
+  z-index: 5;
+}
+
+.top-title {
+  width: 650px;
+  height: auto;
+  margin-bottom: 0px;
+}
+
+.characters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.char {
+  width: 310px;
+  height: auto;
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.6));
+}
+
+.bottom-title {
+  width: 380px;
+  height: auto;
+}
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .speaker {
+    display: none;
+  }
+
+  .top-title {
+  width: 400px;
+  height: auto;
+  }
+
+  .bottom-title {
+  width: 300px;
+  height: auto;
+  }
+
+  .char {
+    width: 210px;
+  }
+
+  .navbar ul {
+    gap: 20px;
+  }
+
+  .navbar a {
+    font-size: 14px;
+}
+}
