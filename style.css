@@ -52,7 +52,7 @@ body {
   opacity: 0.8;
 }
 
-/* ===== HERO  SECTION ===== */
+/* ===== HERO SECTION ===== */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -61,6 +61,21 @@ body {
   background-color: #1b0f27;
   position: relative;
   padding-top: 100px;
+}
+
+.speaker {
+  width: 150px;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.speaker.left {
+  left: 5%;
+}
+
+.speaker.right {
+  right: 5%;
 }
 
 .center-content {
