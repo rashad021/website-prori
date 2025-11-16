@@ -5,7 +5,6 @@
   box-sizing: border-box;
 }
 
-
 body {
   background-color: #140b25;
   font-family: 'Montserrat', sans-serif;
@@ -53,7 +52,7 @@ body {
   opacity: 0.8;
 }
 
-/* ===== HERO SECTION ===== */
+/* ===== HERO  SECTION ===== */
 .hero {
   min-height: 100vh;
   display: flex;
