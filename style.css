@@ -25,6 +25,16 @@ body {
   z-index: 10;
 }
 
+.navbar .logo-nav {
+  position: absolute;
+  left: 45px;
+}
+
+.navbar .logo-nav-img {
+  width: 40px;
+  height: auto;
+}
+
 .navbar ul {
   list-style: none;
   display: flex;
@@ -72,44 +82,30 @@ body {
   z-index: 5;
 }
 
-.title-top {
-  font-family: 'Baloo 2', cursive;
-  font-size: 70px;
-  letter-spacing: 4px;
-  color: white;
-  text-shadow: 0px 4px 10px rgba(255, 0, 100, 0.5);
+.top-title {
+  width: 650px;
+  height: auto;
+  margin-bottom: 0px;
 }
 
 .characters {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 25px;
   margin: 15px 0;
 }
 
 .char {
-  width: 120px;
+  width: 310px;
   height: auto;
-  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.6));
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.6));
 }
 
-.title-bottom {
-  font-family: 'Baloo 2', cursive;
-  font-size: 55px;
-  background: linear-gradient(to right, #ff3366, #9333ea);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 3px 5px rgba(0,0,0,0.4);
+.bottom-title {
+  width: 380px;
+  height: auto;
 }
 
-/* ===== FOOTER ===== */
-footer {
-  background: #1a0f2b;
-  padding: 15px 0;
-  font-size: 14px;
-  color: rgba(255,255,255,0.6);
-}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
@@ -117,19 +113,25 @@ footer {
     display: none;
   }
 
-  .title-top {
-    font-size: 48px;
+  .top-title {
+  width: 400px;
+  height: auto;
   }
 
-  .title-bottom {
-    font-size: 36px;
+  .bottom-title {
+  width: 300px;
+  height: auto;
   }
 
   .char {
-    width: 90px;
+    width: 210px;
   }
 
   .navbar ul {
     gap: 20px;
   }
+
+  .navbar a {
+    font-size: 14px;
+}
 }
