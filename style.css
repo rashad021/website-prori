@@ -79,18 +79,18 @@ body {
 }
 
 .speaker {
-  width: 150px;
+  width: 170px;
   position: absolute;
-  top: 40%;
+  top: 65%; /* <--- DIUBAH! Geser speaker lebih jauh ke bawah */
   transform: translateY(-50%);
 }
 
 .speaker.left {
-  left: 5%;
+  right: 70%;
 }
 
 .speaker.right {
-  right: 5%;
+  left: 67%;
 }
 
 .center-content {
@@ -113,6 +113,7 @@ body {
 }
 
 .char {
+  margin-bottom: 78px;
   transform: scale(1.35);   
   margin: 0 -10px;          
   width: 210px;
