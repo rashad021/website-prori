@@ -28,7 +28,7 @@ body {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 10;
+  z-index: 9999;
 }
 
 .navbar .logo-nav {
@@ -154,4 +154,147 @@ body {
   .navbar a {
     font-size: 14px;
 }
+}
+
+
+/* === STYLE ABOUT PAGE FINAL === */
+
+/* Reset container agar rapi */
+.about-main {
+    padding-top: 100px; /* Jarak dari navbar */
+    padding-bottom: 50px;
+    width: 100%;
+    overflow-x: hidden; /* Mencegah scroll samping jika speaker terlalu lebar */
+    text-align: center;
+}
+
+/* =========================================
+   STYLE FINAL LAMAN ABOUT (FIXED LAYOUT)
+   ========================================= */
+
+/* 1. Layout Utama (Agar Pas Satu Layar) */
+.about-main {
+    /* Menggunakan Viewport Height agar pas di tengah layar laptop */
+    min-height: 90vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Tengahkan Vertikal */
+    align-items: center;     /* Tengahkan Horizontal */
+    
+    padding-top: 80px; /* Kompensasi Navbar */
+    padding-bottom: 20px;
+    width: 100%;
+    overflow: hidden; /* PENTING: Agar speaker gede tidak bikin scroll samping */
+    position: relative;
+}
+
+/* Judul ABOUT (Versi Lebih Besar) */
+.about-title {
+    /* Tadi cuma 300px, sekarang kita naikkan jadi 600px */
+    max-width: 400px; 
+    
+    /* Persentasenya juga kita naikkan biar responsif */
+    width: 70%; 
+    
+    margin-bottom: -65px; 
+    z-index: 10;
+    position: relative;
+}
+
+/* Panggung (Wadah Relatif) */
+.about-stage {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- PENGATURAN LAYER (TUMPUKAN) --- */
+
+/* KOTAK TENGAH (Harus Paling Depan) */
+.box-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Lebar kotak */
+    z-index: 10; /* Angka Gede = Di Depan */
+}
+
+/* Background Gambar Kotak */
+.bg-kotak {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Teks Di Dalam Kotak */
+.text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* PADDING PENTING: Agar teks masuk ke dalam (tidak nabrak pinggir) */
+    padding: 0 18%; 
+}
+
+.text-overlay p {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem; /* Ukuran font pas */
+    line-height: 1.5;
+    text-align: center; /* Rata tengah lebih rapi untuk desain ini */
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* --- PENGATURAN SPEAKER (DI BELAKANG) --- */
+
+.speaker-float {
+    position: absolute;
+    z-index: 1; /* Angka Kecil = Di Belakang Kotak */
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.6));
+}
+
+/* Speaker Kiri (GEDE & MOJOK) */
+.left-sp {
+    width: 300px;   /* Ukuran Jumbo */
+    bottom: -100px; /* Turunin banget */
+    left: -150px;   /* Geser kiri banget */
+    transform: rotate(-15deg);
+}
+
+/* Speaker Kanan (RAPAT) */
+.right-sp {
+    width: 300px;   /* Ukuran Sedang/Besar */
+    top: -100px;     /* Naik ke atas */
+    right: -150px;   /* Rapat ke kotak */
+    transform: rotate(10deg);
+}
+
+
+/* --- RESPONSIVE (HP) --- */
+@media (max-width: 768px) {
+    .about-main {
+        display: block; /* Matikan mode tengah layar di HP */
+        padding-top: 100px;
+    }
+    
+    .text-overlay {
+        padding: 0 12%; /* Padding lebih kecil di HP */
+    }
+    .text-overlay p {
+        font-size: 0.85rem;
+    }
+    
+    /* Kecilkan speaker di HP agar layar tidak penuh */
+    .left-sp { width: 120px; left: -20px; bottom: -20px; }
+    .right-sp { width: 120px; right: -20px; top: -20px; }
 }
