@@ -60,8 +60,10 @@ body {
   transition: 0.3s;
 }
 
+
 .navbar a:hover {
-  opacity: 0.8;
+  opacity: 0.3; /* Kembali ke opacity hover awal Anda */
+  /* HAPUS: transform: scale(1.15); */
 }
 
 /* ===== HERO SECTION ===== */
@@ -79,18 +81,18 @@ body {
 }
 
 .speaker {
-  width: 150px;
+  width: 170px;
   position: absolute;
-  top: 40%;
+  top: 65%; /* <--- DIUBAH! Geser speaker lebih jauh ke bawah */
   transform: translateY(-50%);
 }
 
 .speaker.left {
-  left: 5%;
+  right: 70%;
 }
 
 .speaker.right {
-  right: 5%;
+  left: 67%;
 }
 
 .center-content {
@@ -113,6 +115,7 @@ body {
 }
 
 .char {
+  margin-bottom: 78px;
   transform: scale(1.35);   
   margin: 0 -10px;          
   width: 210px;
@@ -340,6 +343,84 @@ body {
 /* --- RESPONSIVE (HP) --- */
 @media (max-width: 768px) {
     .about-main {
+        display: block; /* Matikan mode tengah layar di HP */
+        padding-top: 100px;
+    }
+    
+    .text-overlay {
+        padding: 0 12%; /* Padding lebih kecil di HP */
+    }
+    .text-overlay p {
+        font-size: 0.85rem;
+    }
+    
+    /* Kecilkan speaker di HP agar layar tidak penuh */
+    .left-sp { width: 120px; left: -20px; bottom: -20px; }
+    .right-sp { width: 120px; right: -20px; top: -20px; }
+}
+
+/* team */
+.team-section {
+  text-align: center;
+  padding: 80px 40px;
+  background: linear-gradient(180deg, #1a0033, #12001f);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.team-section h1 {
+  font-size: 50px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-bottom: 40px;
+  text-shadow: 0 0 12px rgba(255, 0, 255, 0.6);
+}
+
+.main-member img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #ff0066;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+}
+
+.main-member h3 {
+  font-size: 28px;
+  margin-top: 15px;
+}
+
+.role {
+  opacity: 0.7;
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+.team-list {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.member img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ff0095;
+  box-shadow: 0 0 15px rgba(255, 0, 200, 0.6);
+}
+
+.member p {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+/* --- RESPONSIVE (HP) --- */
+@media (max-width: 768px) {
+  .about-main {
         display: block; /* Matikan mode tengah layar di HP */
         padding-top: 100px;
     }
