@@ -17,7 +17,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #e03b3b, #9333ea);
+  background: linear-gradient(to right, 
+    #f79b1f,
+    #df2535,
+    #af1b4a,
+    #1a0c58
+);
+
   padding: 15px 0;
   position: fixed;
   width: 100%;
@@ -35,10 +41,16 @@ body {
   height: auto;
 }
 
+
 .navbar ul {
-  list-style: none;
+    margin-left: 130px;
+    list-style: none;
   display: flex;
-  gap: 40px;
+  gap: 170px;
+}
+
+.navbar li{
+    margin-right: 90px;
 }
 
 .navbar a {
@@ -58,7 +70,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #1b0f27;
+  background: url('TI/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   position: relative;
   padding-top: 100px;
 }
@@ -79,29 +94,34 @@ body {
 }
 
 .center-content {
+  margin-top: -60px;
   z-index: 5;
+  transform: scale(1.25);
 }
 
 .top-title {
-  width: 650px;
+  width: 550px;
   height: auto;
-  margin-bottom: 0px;
+  margin-bottom: -15px;
 }
 
 .characters {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 15px 0;
+  margin: 0;
 }
 
 .char {
-  width: 310px;
+  transform: scale(1.35);   
+  margin: 0 -10px;          
+  width: 210px;
   height: auto;
   filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.6));
 }
 
 .bottom-title {
+  margin-top: -10px;
   width: 380px;
   height: auto;
 }
