@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - PRORIENTATION</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="scripts.js" defer></script>
+
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+
+      <div class="logo-nav">
+        <img src="TI/PRORI LOGO SMALL.png" alt="PRORIENTATION Logo" class="logo-nav-img">
+      </div>
+
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="team.html">Team</a></li>
+      </ul>
+    </nav>
+  </header>
+
+      <main class="projects-main">
+        
+        <div class="projects-header">
+            <img src="TI/PROJECTS copy.png" class="projects-title">
+        </div>
+
+        <div class="projects-stage">
+            <div class = "project menu">
+                <div class = "project select" onclick ="showPopup('film1')">
+                    <img src="TI/tsijinema production.png" alt="SF 1">
+                </div>
+                <div class = "project select" onclick ="showPopup('film2')">
+                    <img src="TI/dua kosong production.png" alt="SF 2">
+                </div>
+                <div class = "project select" onclick ="showPopup('film3')">
+                    <img src="TI/iyalagi  production.png" alt="SF 3">
+                </div>
+
+            </div>
+            <div class = "project menu2">
+                <div class = "project select" onclick ="showPopup('MV1')">
+                    <img src="TI/the jorts.png" alt="Music 1">
+                </div>
+                <div class = "project select" onclick ="showPopup('MV2')">
+                    <img src="TI/charmless pals.png" alt="Music 2">
+                </div>
+
+            </div>
+            <div class = "projects-background">
+            </div>
+
+        </div>
+        <div id="popup-overlay" class="popup-overlay" onclick="closePopup()"></div>
+
+    <div id="popup-box" class="popup-box">
+        <div class="popup-content">
+            <span class="popup-close" onclick="closePopup()">×</span>
+            <h2 id="popup-title"></h2>
+            <p id="popup-text"></p>
+        </div>
+    </div>
