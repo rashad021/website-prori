@@ -164,11 +164,25 @@ body {
 
 /* Reset container agar rapi */
 .about-main {
-    padding-top: 100px; /* Jarak dari navbar */
-    padding-bottom: 50px;
+    /* min-height: 100vh artinya minimal setinggi layar, 
+       tapi 'auto' membolehkan dia memanjang lebih dari itu */
+    min-height: 100vh; 
+    height: auto; 
+    
     width: 100%;
-    overflow-x: hidden; /* Mencegah scroll samping jika speaker terlalu lebar */
-    text-align: center;
+    
+    /* HANYA sembunyikan yang melebar ke samping (speaker), 
+       tapi BIARKAN yang ke bawah */
+    overflow-x: hidden; 
+    overflow-y: visible;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center;
+    
+    padding-top: 120px; 
+    padding-bottom: 100px; /* Tambah jarak bawah biar lega */
 }
 
 /* =========================================
@@ -193,7 +207,7 @@ body {
 
 /* Judul ABOUT (Versi Lebih Besar) */
 .about-title {
-    /* Tadi cuma 300px, sekarang kita naikkan jadi 600px */
+    /* Tadi cuma 300px, sekarang kita naikkan jadi 400px */
     max-width: 400px; 
     
     /* Persentasenya juga kita naikkan biar responsif */
