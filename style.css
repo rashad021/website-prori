@@ -205,14 +205,10 @@ body {
     position: relative;
 }
 
-/* Judul ABOUT (Versi Lebih Besar) */
+/* Judul ABOUT */
 .about-title {
-    /* Tadi cuma 300px, sekarang kita naikkan jadi 400px */
     max-width: 400px; 
-    
-    /* Persentasenya juga kita naikkan biar responsif */
-    width: 70%; 
-    
+    width: 70%;
     margin-bottom: -65px; 
     z-index: 10;
     position: relative;
@@ -231,7 +227,7 @@ body {
 
 /* --- PENGATURAN LAYER (TUMPUKAN) --- */
 
-/* KOTAK TENGAH (Harus Paling Depan) */
+/* KOTAK TENGAH */
 .box-wrapper {
     position: relative;
     width: 100%;
@@ -282,17 +278,17 @@ body {
 
 /* Speaker Kiri (GEDE & MOJOK) */
 .left-sp {
-    width: 300px;   /* Ukuran Jumbo */
-    bottom: -100px; /* Turunin banget */
-    left: -150px;   /* Geser kiri banget */
+    width: 300px;   
+    bottom: -100px; 
+    left: -150px;   
     transform: rotate(-15deg);
 }
 
 /* Speaker Kanan (RAPAT) */
 .right-sp {
-    width: 300px;   /* Ukuran Sedang/Besar */
-    top: -100px;     /* Naik ke atas */
-    right: -150px;   /* Rapat ke kotak */
+    width: 300px;   
+    top: -100px;     
+    right: -150px;  
     transform: rotate(10deg);
 }
 /* team */
