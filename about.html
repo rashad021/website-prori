@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - PRORIENTATION</title>
+    <title>About & Mascots - PRORIENTATION</title>
     <link rel="stylesheet" href="style.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body class="about-page">
 
-    <nav class="navbar">
+    <nav class="navbar fixed-nav">
         <div class="logo-nav">
             <a href="index.html">
                 <img src="TI/PRORI LOGO SMALL.png" alt="PRORIENTATION Logo" class="logo-nav-img">
@@ -22,86 +22,34 @@
             <li><a href="team.html">Team</a></li>
         </ul>
     </nav>
-    <main class="about-section">
+
+    <section id="about-prori" class="full-screen-section about-bg">
         <div class="content-wrapper">
             <img src="TI/ABOUT PRORI FIX.webp" alt="Judul About" class="about-title-img">
-            
             <img src="TI/TABEL ABOUT FIX.webp" alt="Deskripsi Prorientation" class="about-text-img">
         </div>
-    </main>
 
-</body>
-</html>
-    
-<div class="music-player">
-        <audio id="bgMusic" loop>
-            <source src="TI/BS1.mp3" type="audio/mpeg">
-        </audio>
+        <div class="scroll-btn-container bottom">
+            <a href="#mascots">
+                <img src="TI/button down.png" alt="Scroll Down" class="nav-btn-img bounce-anim">
+            </a>
+        </div>
+    </section>
 
-        <button onclick="toggleAudio()" id="musicBtn" title="Play/Pause Music">
-            🔇
-        </button>
-    </div>
-    <script>
-        var audio = document.getElementById("bgMusic");
-        var btn = document.getElementById("musicBtn");
-
-        // --- ATUR VOLUME DI SINI ---
-        // Kita turunkan drastis ke 0.1 (10%)
-        audio.volume = 0.1; 
-        // ---------------------------
-
-        // 1. CEK MEMORI BROWSER SAAT HALAMAN DIBUKA
-        window.onload = function() {
-            var isPlaying = localStorage.getItem("musicStatus") === "true";
-            var lastTime = parseFloat(localStorage.getItem("musicTime"));
-
-            // Lompat ke detik terakhir
-            if (lastTime) {
-                audio.currentTime = lastTime;
-            }
-
-            // Coba nyalakan musik jika statusnya playing
-            if (isPlaying) {
-                var playPromise = audio.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(_ => {
-                        btn.innerHTML = "🎵";
-                        btn.style.animation = "pulse 1.5s infinite";
-                    }).catch(error => {
-                        console.log("Autoplay dicegah browser.");
-                        btn.innerHTML = "🔇";
-                        localStorage.setItem("musicStatus", "false");
-                    });
-                }
-            }
-        };
-
-        // 2. FUNGSI TOMBOL KLIK
-        function toggleAudio() {
-            if (audio.paused) {
-                audio.play();
-                btn.innerHTML = "🎵";
-                btn.style.animation = "pulse 1.5s infinite";
-                localStorage.setItem("musicStatus", "true");
-            } else {
-                audio.pause();
-                btn.innerHTML = "🔇";
-                btn.style.animation = "none";
-                localStorage.setItem("musicStatus", "false");
-            }
-        }
-
-        // 3. SIMPAN WAKTU TERUS MENERUS
-        setInterval(function() {
-            if (!audio.paused) {
-                localStorage.setItem("musicTime", audio.currentTime);
-            }
-        }, 1000);
+    <section id="mascots" class="full-screen-section mascot-bg">
         
-        window.addEventListener("beforeunload", function () {
-             localStorage.setItem("musicTime", audio.currentTime);
-        });
-    </script>
+        <div class="scroll-btn-container top-spacer"> 
+             <a href="#about-prori">
+                <img src="TI/button up.png" alt="Scroll Up" class="nav-btn-img bounce-anim">
+            </a>
+        </div>
+
+        <div class="content-wrapper mascot-wrapper">
+            <img src="TI/MASCOT.webp" alt="Get to Know Mascots" class="mascot-title-img">
+            
+            <img src="TI/CION.webp" alt="Cion Description" class="mascot-card-img">
+            
+            <img src="TI/maestro g.webp" alt="Maestro G Description" class="mascot-card-img" id="maestro-g">
+        </div>
 </body>
 </html>
