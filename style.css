@@ -1,14 +1,3 @@
-@font-face {
-/* Berikan nama kustom untuk font Anda */
-  font-family: 'AplikasiFont'; 
-  
-  /* PENTING: Ganti dengan jalur dan nama file .ttf yang benar */
-  src: url('font/helvetica-light-587ebe5a59211.ttf') format('truetype'); 
-  
-  font-weight: normal; 
-  font-style: normal;
-    }
-
 /* ===== RESET DASAR ===== */
 * {
   margin: 0;
@@ -19,7 +8,7 @@
 body {
   /* Font WOFF Anda menjadi font prioritas utama. */
   /* Jika gagal dimuat, akan kembali menggunakan Helvetica, lalu Arial, dll. */
-  font-family: 'AplikasiFont', Helvetica, Arial;
+  font-family: 'Montserrat', sans-serif;
   background-color: #140b25;
   color: white;
   text-align: center;
@@ -72,11 +61,12 @@ body {
   text-decoration: none;
   color: white;
   transition: 0.3s;
+  font-weight: 600;
 }
 
 
 .navbar a:hover {
-  opacity: 0.3; /* Kembali ke opacity hover awal Anda */
+  opacity: 0.8; /* Kembali ke opacity hover awal Anda */
   /* HAPUS: transform: scale(1.15); */
 }
 
@@ -102,14 +92,10 @@ body {
     width: 170px; 
     height: auto;
     top: 45px; 
-
     top: auto; 
-    
     z-index: 2;
-
     transform: scale(1);
     transform-origin: bottom center; 
-    
     transition: all 0.3s ease-in-out;
 }
 
@@ -311,6 +297,104 @@ body {
     transform: rotate(10deg);
 }
 
+/* ------------------------------
+   MAIN SCREEN
+--------------------------------*/
+.projects-main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+/* ------------------------------
+   TITLE / HEADER
+--------------------------------*/
+.projects-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.projects-title {
+    width: 380px;            /* sesuaikan jika judul terlalu besar */
+    filter: drop-shadow(0 0 5px #ff0037);
+    margin-top: 42px;
+}
+
+/* ------------------------------
+   PROJECT GRID
+--------------------------------*/
+.projects-stage {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* jarak antar baris */
+    margin-top: -50px;
+}
+
+/* Setiap baris */
+.project.menu {
+    display: flex;
+    justify-content: center;
+    gap: 40px;  /* jarak antar item */
+}
+
+.project.menu2 {
+    display: flex;
+    justify-content: center;
+    gap: 40px;  
+    margin-top: -120px;/* jarak antar item */
+}
+
+/* ------------------------------
+   PROJECT ICONS (CIRCLES)
+--------------------------------*/
+.project.select {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Icon di dalam lingkaran */
+.project.select img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Hover effect */
+.project.select:hover {
+    transform: scale(1.08);
+    box-shadow:
+        0 0 20px #ff2055,
+}
+
+.projects-background {
+    position: fixed;      /* agar selalu jadi background */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;          /* supaya berada di belakang semua konten */
+    
+    background-image: url("TI/bg\ prject.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
 /* team */
 .team-section {
   background-image: url("TI/BG TEAM (CONVERTED).png");
@@ -318,16 +402,16 @@ body {
   background-position: center;    
   background-repeat: no-repeat;
   width: 100%;
-  min-height: 100vh;              
-  padding-top: 100px;              
+  min-height: 100vh;                         
   text-align: center;
   position: relative;
 }
 
 /* Judul besar */
 .title-team {
-  width: 750px; 
+  width: 600px; 
   margin: 0 auto;
+  margin-top: 50px;
   display: block;
   margin-bottom: -40px;   
 }
@@ -350,8 +434,9 @@ body {
 
 /* Member kecil */
 .member img {
-  width: 300px;
-  display: block;
+  width: 230px;
+  display: flex;
+  margin-top: 30px;
 }
 
 .team-section * {
