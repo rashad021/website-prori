@@ -25,17 +25,6 @@ body {
   text-align: center;
 }
 
-/* --- KEYFRAMES UNTUK AWAL MASUK GAMBAR KARAKTER --- */
-@keyframes characterEntry {
-    0% {
-        opacity: 0; 
-        transform: scale(1.35) translateY(50px); /* Mulai dari bawah & kecil/normal */
-    }
-    100% {
-        opacity: 1; 
-        transform: scale(1.35) translateY(0); /* Posisi akhir: normal */
-    }
-}
 
 
 /* ===== NAVBAR ===== */
@@ -93,7 +82,7 @@ body {
 
 /* ===== HERO SECTION ===== */
 .hero {
-  min-height: 100vh;
+  min-height: 100.9vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,6 +92,7 @@ body {
   background-repeat: no-repeat;
   position: relative;
   padding-top: 100px;
+  padding-bottom: 37px;
 }
 
 /* === CSS SPEAKER FINAL === */
@@ -194,7 +184,7 @@ body {
 @keyframes characterEntry {
     0% {
         opacity: 0; 
-        transform: scale(1.35) translateY(50px);
+        transform: scale(2.35) translateY(0px);
     }
     100% {
         opacity: 1; 
