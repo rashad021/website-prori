@@ -92,14 +92,10 @@ body {
     width: 170px; 
     height: auto;
     top: 45px; 
-
     top: auto; 
-    
     z-index: 2;
-
     transform: scale(1);
     transform-origin: bottom center; 
-    
     transition: all 0.3s ease-in-out;
 }
 
