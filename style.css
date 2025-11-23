@@ -405,7 +405,7 @@ body.about-page {
 
 /* Main member */
 .avatar-main {
-  width: 280px;
+  width: 300px;
   display: block;
   margin: 0 auto 20px;
 }
@@ -421,7 +421,7 @@ body.about-page {
 
 /* Member kecil */
 .member img {
-  width: 280px;
+  width: 300px;
   display: flex;
   margin-top: 20;
 }
