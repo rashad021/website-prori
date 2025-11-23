@@ -1,3 +1,14 @@
+@font-face {
+/* Berikan nama kustom untuk font Anda */
+  font-family: 'AplikasiFont'; 
+  
+  /* PENTING: Ganti dengan jalur dan nama file .ttf yang benar */
+  src: url('font/helvetica-light-587ebe5a59211.ttf') format('truetype'); 
+  
+  font-weight: normal; 
+  font-style: normal;
+    }
+
 /* ===== RESET DASAR ===== */
 * {
   margin: 0;
@@ -6,11 +17,14 @@
 }
 
 body {
+  /* Font WOFF Anda menjadi font prioritas utama. */
+  /* Jika gagal dimuat, akan kembali menggunakan Helvetica, lalu Arial, dll. */
+  font-family: 'AplikasiFont', Helvetica, Arial;
   background-color: #140b25;
-  font-family: 'Montserrat', sans-serif;
   color: white;
   text-align: center;
 }
+
 
 /* ===== NAVBAR ===== */
 .navbar {
