@@ -310,63 +310,50 @@ body {
     right: -150px;  
     transform: rotate(10deg);
 }
+
+/* team */
 .team-section {
+  background-image: url("TI/BG TEAM (CONVERTED).png");
+  background-size: cover;         
+  background-position: center;    
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;              
+  padding-top: 100px;              
   text-align: center;
-  padding: 80px 40px;
-  background: linear-gradient(180deg, #1a0033, #12001f);
-  color: white;
-  font-family: 'AplikasiFont', sans-serif;
+  position: relative;
 }
 
-.team-section h1 {
-  font-size: 50px;
-  font-weight: 900;
-  letter-spacing: 4px;
-  margin-bottom: 40px;
-  text-shadow: 0 0 12px rgba(255, 0, 255, 0.6);
+/* Judul besar */
+.title-team {
+  width: 750px; 
+  margin: 0 auto;
+  display: block;
+  margin-bottom: -40px;   
 }
 
-.main-member img {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 5px solid #ff0066;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+/* Main member */
+.avatar-main {
+  width: 280px;
+  display: block;
+  margin: 0 auto 20px;
 }
 
-.main-member h3 {
-  font-size: 28px;
-  margin-top: 15px;
-}
-
-.role {
-  opacity: 0.7;
-  margin-top: 5px;
-  font-size: 18px;
-}
-
+/* ROW MEMBERS */
 .team-list {
-  margin-top: 40px;
+  margin-top: -100px;
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 0px;    
   flex-wrap: wrap;
 }
 
+/* Member kecil */
 .member img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #ff0095;
-  box-shadow: 0 0 15px rgba(255, 0, 200, 0.6);
+  width: 300px;
+  display: block;
 }
 
-.member p {
-  margin-top: 8px;
-  font-size: 14px;
-}
 
 /* --- RESPONSIVE (HP) --- */
 @media (max-width: 768px) {
@@ -385,198 +372,6 @@ body {
     /* Kecilkan speaker di HP agar layar tidak penuh */
     .left-sp { width: 120px; left: -20px; bottom: -20px; }
     .right-sp { width: 120px; right: -20px; top: -20px; }
-}
-
-/* --- PROJECTS --- */
-
-/* ------------------------------
-   TITLE / HEADER
---------------------------------*/
-.projects-header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-    margin-top: 80px;
-}
-
-.projects-title {
-    width: 350px;            /* sesuaikan jika judul terlalu besar */
-}
-
-/* ------------------------------
-   PROJECT GRID
---------------------------------*/
-.projects-stage {
-    display: flex;
-    flex-direction: column;
-    gap: 0px; 
-}
-
-/* Setiap baris */
-.project.menu {
-    display: flex;
-    justify-content: center;
-    gap: 20px;  /* jarak antar item */
-}
-
-.project.menu2 {
-    display: flex;
-    justify-content: center;
-    gap: 20px;  /* jarak antar item */
-    margin-top: -60px;
-}
-
-/* ------------------------------
-   PROJECT ICONS (CIRCLES)
---------------------------------*/
-.project.select {
-    width: 300px;
-    height: 300px;
-    border-radius: 70%;
-    overflow: hidden;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-/* Icon di dalam lingkaran */
-.project.select img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-/* Hover effect */
-.project.select:hover {
-    transform: scale(1.08);
-    box-shadow:
-        0 0 100px #ff2055,
-}
-
-.projects-background {
-    position: fixed;      /* agar selalu jadi background */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;          /* supaya berada di belakang semua konten */
-
-    background-image: url("TI/bg prject.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-/* ------------------------------
-   POPUP STYLES
---------------------------------*/
-
-.popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.55);
-    display: none;
-    z-index: 50;
-}
-
-/* Kotak Popup */
-.popup-box {
-    position: fixed;
-    top: 5%;                 /* atas-bawah kecil */
-    left: 15%;               /* kanan-kiri lebih besar */
-    width: 70%;              /* sisakan space besar di kanan-kiri */
-    height: 86%;             /* hampir memenuhi tinggi */
-    background: #140b25;
-    border-radius: 20px;
-    padding: 30px;
-    display: none;
-    z-index: 100;
-    overflow-y: auto;
-    margin-top: 40px;
-}
-
-/* Isi popup */
-.popup-content {
-    color: white;
-    font-family: 'AplikasiFont', sans-serif;
-}
-
-.popup-close {
-    font-size: 40px;
-    font-weight: bold;
-    float: right;
-    cursor: pointer;
-    color: white;
-}
-
-.popup-close:hover {
-    color:red;
-}
-
-/* team */
-.team-section {
-  text-align: center;
-  padding: 80px 40px;
-  background: linear-gradient(180deg, #1a0033, #12001f);
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.team-section h1 {
-  font-size: 50px;
-  font-weight: 900;
-  letter-spacing: 4px;
-  margin-bottom: 40px;
-  text-shadow: 0 0 12px rgba(255, 0, 255, 0.6);
-}
-
-.main-member img {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 5px solid #ff0066;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
-}
-
-.main-member h3 {
-  font-size: 28px;
-  margin-top: 15px;
-}
-
-.role {
-  opacity: 0.7;
-  margin-top: 5px;
-  font-size: 18px;
-}
-
-.team-list {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.member img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #ff0095;
-  box-shadow: 0 0 15px rgba(255, 0, 200, 0.6);
-}
-
-.member p {
-  margin-top: 8px;
-  font-size: 14px;
 }
 
 /* --- RESPONSIVE (HP) --- */
