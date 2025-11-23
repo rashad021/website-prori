@@ -412,7 +412,7 @@ body.about-page {
 
 /* ROW MEMBERS */
 .team-list {
-  margin-top: -100px;
+  margin-top: -85px;
   display: flex;
   justify-content: center;
   gap: 0px;    
@@ -421,7 +421,7 @@ body.about-page {
 
 /* Member kecil */
 .member img {
-  width: 280px;
+  width: 200px;
   display: flex;
   margin-top: 20;
 }
