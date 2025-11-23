@@ -411,14 +411,14 @@ body {
 .title-team {
   width: 600px; 
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 60px;
   display: block;
   margin-bottom: -40px;   
 }
 
 /* Main member */
 .avatar-main {
-  width: 280px;
+  width: 300px;
   display: block;
   margin: 0 auto 20px;
 }
@@ -434,9 +434,9 @@ body {
 
 /* Member kecil */
 .member img {
-  width: 230px;
+  width: 300px;
   display: flex;
-  margin-top: 30px;
+  margin-top: 20;
 }
 
 .team-section * {
@@ -454,6 +454,33 @@ body {
   position: relative;
   z-index: 10;
 }
+
+/* Untuk member kecil */
+.member img {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.member img:hover {
+  transform: scale(1.08); 
+}
+
+/* Untuk karakter utama juga */
+.avatar-main {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.avatar-main:hover {
+  transform: scale(1.1);
+}
+
+/* Hilangkan jarak default dari gambar judul */
+.title-team {
+  margin-top: 0 !important;
+  padding-top: 80px;   /* kasih sedikit biar tidak terlalu nempel */
+}
+
 
 /* --- RESPONSIVE (HP) --- */
 @media (max-width: 768px) {
