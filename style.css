@@ -281,64 +281,50 @@ body {
     right: -150px;   /* Rapat ke kotak */
     transform: rotate(10deg);
 }
+
 /* team */
 .team-section {
+  background-image: url("TI/BG TEAM (CONVERTED).png");
+  background-size: cover;         
+  background-position: center;    
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;              
+  padding-top: 100px;              
   text-align: center;
-  padding: 80px 40px;
-  background: linear-gradient(180deg, #1a0033, #12001f);
-  color: white;
-  font-family: 'Montserrat', sans-serif;
+  position: relative;
 }
 
-.team-section h1 {
-  font-size: 50px;
-  font-weight: 900;
-  letter-spacing: 4px;
-  margin-bottom: 40px;
-  text-shadow: 0 0 12px rgba(255, 0, 255, 0.6);
+/* Judul besar */
+.title-team {
+  width: 750px; 
+  margin: 0 auto;
+  display: block;
+  margin-bottom: -40px;   /* JARAK DIKECILIN */
 }
 
-.main-member img {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 5px solid #ff0066;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+/* Main member */
+.avatar-main {
+  width: 280px;
+  display: block;
+  margin: 0 auto 20px;
 }
 
-.main-member h3 {
-  font-size: 28px;
-  margin-top: 15px;
-}
-
-.role {
-  opacity: 0.7;
-  margin-top: 5px;
-  font-size: 18px;
-}
-
+/* ROW MEMBERS */
 .team-list {
-  margin-top: 40px;
+  margin-top: -100px;
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 0px;    
   flex-wrap: wrap;
 }
 
+/* Member kecil */
 .member img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #ff0095;
-  box-shadow: 0 0 15px rgba(255, 0, 200, 0.6);
+  width: 300px;
+  display: block;
 }
 
-.member p {
-  margin-top: 8px;
-  font-size: 14px;
-}
 
 /* --- RESPONSIVE (HP) --- */
 @media (max-width: 768px) {
@@ -357,65 +343,6 @@ body {
     /* Kecilkan speaker di HP agar layar tidak penuh */
     .left-sp { width: 120px; left: -20px; bottom: -20px; }
     .right-sp { width: 120px; right: -20px; top: -20px; }
-}
-
-/* team */
-.team-section {
-  text-align: center;
-  padding: 80px 40px;
-  background: linear-gradient(180deg, #1a0033, #12001f);
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.team-section h1 {
-  font-size: 50px;
-  font-weight: 900;
-  letter-spacing: 4px;
-  margin-bottom: 40px;
-  text-shadow: 0 0 12px rgba(255, 0, 255, 0.6);
-}
-
-.main-member img {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 5px solid #ff0066;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
-}
-
-.main-member h3 {
-  font-size: 28px;
-  margin-top: 15px;
-}
-
-.role {
-  opacity: 0.7;
-  margin-top: 5px;
-  font-size: 18px;
-}
-
-.team-list {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.member img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #ff0095;
-  box-shadow: 0 0 15px rgba(255, 0, 200, 0.6);
-}
-
-.member p {
-  margin-top: 8px;
-  font-size: 14px;
 }
 
 /* --- RESPONSIVE (HP) --- */
