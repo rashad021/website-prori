@@ -383,70 +383,81 @@ body.about-page {
 
 
 /* team */
-/* ============================= */
-/*      TEAM SECTION REMAKE      */
-/* ============================= */
-
 .team-section {
   background-image: url("TI/BG TEAM (CONVERTED).png");
-  background-size: cover;
-  background-position: center;
+  background-size: cover;         
+  background-position: center;    
   background-repeat: no-repeat;
-
   width: 100%;
-  min-height: 100vh;
-
+  min-height: 100vh;                         
   text-align: center;
   position: relative;
-
-  padding-top: 100px; /* biar ga nempel navbar */
 }
 
-/* Title */
+/* Judul besar */
 .title-team {
-  width: clamp(260px, 40vw, 600px);
+  width: 600px; 
   margin: 0 auto;
+  margin-top: 60px;
   display: block;
-   margin-top: -20px;
-  margin-bottom: 20px;
+  margin-bottom: -40px;   
 }
 
-/* Main Member */
+/* Main member */
 .avatar-main {
-  width: clamp(200px, 25vw, 280px);
+  width: 300px;
   display: block;
-  margin: -50px auto 0;
-  transition: transform 0.25s ease;
-  cursor: pointer;
+  margin: 0 auto 20px;
 }
 
-/* Hover nonjol */
-.avatar-main:hover {
-  transform: scale(1.1);
-}
-
-/* Team Row */
+/* ROW MEMBERS */
 .team-list {
-  margin-top: -50px;
+  margin-top: -100px;
   display: flex;
   justify-content: center;
-  gap: clamp(10px, 3vw, 40px);
+  gap: 0px;    
   flex-wrap: wrap;
 }
 
-/* Member image */
+/* Member kecil */
 .member img {
-  width: clamp(150px, 18vw, 260px);
-  transition: transform 0.25s ease;
+  width: 280px;
+  display: flex;
+  margin-top: 20;
+}
+
+.team-section * {
+  position: relative;
+  z-index: 10;
+}
+
+.main-member a,
+.member a {
+  display: inline-block;
+  width: fit-content;
+}
+
+.team-section * {
+  position: relative;
+  z-index: 10;
+}
+
+/* Untuk member kecil */
+.member img {
+  transition: transform 0.2s ease;
   cursor: pointer;
 }
 
-/* Hover nonjol */
 .member img:hover {
-  transform: scale(1.08);
+  transform: scale(1.08); 
 }
 
-/* Fix clickable area */
+/* Untuk karakter utama juga */
+.avatar-main {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
 .main-member a,
 .member a {
   display: inline-flex;
@@ -454,10 +465,14 @@ body.about-page {
   align-items: center;
 }
 
-/* Ensures all content stays above background */
-.team-section * {
-  position: relative;
-  z-index: 10;
+.avatar-main:hover {
+  transform: scale(1.1);
+}
+
+/* Hilangkan jarak default dari gambar judul */
+.title-team {
+  margin-top: 0 !important;
+  padding-top: 80px;   /* kasih sedikit biar tidak terlalu nempel */
 }
 
 /* --- RESPONSIVE (HP) --- */
