@@ -47,9 +47,97 @@
     </div>
   </section> 
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-  
+ <div class="music-player">
+        <audio id="bgMusic" loop>
+            <source src="TI/BS1.mp3" type="audio/mpeg">
+        </audio>
+
+        <button onclick="toggleAudio()" id="musicBtn" title="Play/Pause Music">
+            🔇
+        </button>
+    </div>
+
+    <script>
+        var audio = document.getElementById("bgMusic");
+        var btn = document.getElementById("musicBtn");
+        
+        // AMBIL ELEMEN SPEAKER (Kiri & Kanan)
+        var speakerKiri = document.querySelector(".speaker.left");
+        var speakerKanan = document.querySelector(".speaker.right");
+
+        audio.volume = 0.15; // Volume kecil
+
+        // FUNGSI: Bikin Speaker Joget / Berhenti
+        function updateSpeakerAnimation(isPlaying) {
+            if (isPlaying) {
+                // Kalau nyala, TEMPEL kelas .joget
+                if(speakerKiri) speakerKiri.classList.add("joget");
+                if(speakerKanan) speakerKanan.classList.add("joget");
+            } else {
+                // Kalau mati, COPOT kelas .joget
+                if(speakerKiri) speakerKiri.classList.remove("joget");
+                if(speakerKanan) speakerKanan.classList.remove("joget");
+            }
+        }
+
+        // 1. CEK SAAT HALAMAN DIBUKA
+        window.onload = function() {
+            var isPlaying = localStorage.getItem("musicStatus") === "true";
+            var lastTime = parseFloat(localStorage.getItem("musicTime"));
+
+            if (lastTime) audio.currentTime = lastTime;
+
+            if (isPlaying) {
+                var playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        btn.innerHTML = "🎵";
+                        btn.style.animation = "pulse 1.5s infinite";
+                        
+                        // NYALAKAN SPEAKER JOGET
+                        updateSpeakerAnimation(true);
+                        
+                    }).catch(error => {
+                        console.log("Autoplay dicegah.");
+                        btn.innerHTML = "🔇";
+                    });
+                }
+            }
+        };
+
+        // 2. SAAT TOMBOL DIKLIK
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = "🎵";
+                btn.style.animation = "pulse 1.5s infinite";
+                localStorage.setItem("musicStatus", "true");
+                
+                // NYALAKAN JOGET
+                updateSpeakerAnimation(true);
+                
+            } else {
+                audio.pause();
+                btn.innerHTML = "🔇";
+                btn.style.animation = "none";
+                localStorage.setItem("musicStatus", "false");
+                
+                // MATIKAN JOGET
+                updateSpeakerAnimation(false);
+            }
+        }
+
+        // 3. SIMPAN WAKTU
+        setInterval(function() {
+            if (!audio.paused) {
+                localStorage.setItem("musicTime", audio.currentTime);
+            }
+        }, 1000);
+        
+        window.addEventListener("beforeunload", function () {
+             localStorage.setItem("musicTime", audio.currentTime);
+        });
+    </script>
+    
 </body>
 </html>

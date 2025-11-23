@@ -80,19 +80,43 @@ body {
   padding-top: 100px;
 }
 
-.speaker {
-  width: 170px;
-  position: absolute;
-  top: 65%; /* <--- DIUBAH! Geser speaker lebih jauh ke bawah */
-  transform: translateY(-50%);
-}
+/* === CSS SPEAKER FINAL === */
 
-.speaker.left {
-  right: 70%;
+.speaker {
+    position: absolute;
+    width: 170px; 
+    height: auto;
+    top: 45px; 
+
+    top: auto; 
+    
+    z-index: 2;
+
+    transform: scale(1);
+    transform-origin: bottom center; 
+    
+    transition: all 0.3s ease-in-out;
 }
 
 .speaker.right {
-  left: 67%;
+    left: 67%;
+}
+.speaker.left {
+    right: 70%;
+}
+
+
+/*  Gerakan Joget (Beat) */
+@keyframes speakerBeat {
+    0% { transform: scale(1); } /* Mulai dari ukuran normal */
+    40% { transform: scale(1.08); } /* Membesar sedikit */
+    100% { transform: scale(1); } /* Kembali normal */
+}
+
+/* Ditempel JS saat Musik Nyala */
+.speaker.joget {
+    animation: speakerBeat 1s infinite ease-in-out;
+    filter: drop-shadow(0 0 20px rgba(255, 220, 0, 0.7));
 }
 
 .center-content {
@@ -129,7 +153,6 @@ body {
   height: auto;
 }
 
-
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .speaker {
@@ -160,52 +183,20 @@ body {
 }
 
 
-/* === STYLE ABOUT PAGE FINAL === */
-
-/* Reset container agar rapi */
+/* LAYOUT PAGE ABOUT */
 .about-main {
-    /* min-height: 100vh artinya minimal setinggi layar, 
-       tapi 'auto' membolehkan dia memanjang lebih dari itu */
-    min-height: 100vh; 
-    height: auto; 
-    
-    width: 100%;
-    
-    /* HANYA sembunyikan yang melebar ke samping (speaker), 
-       tapi BIARKAN yang ke bawah */
-    overflow-x: hidden; 
-    overflow-y: visible;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; 
-    align-items: center;
-    
-    padding-top: 120px; 
-    padding-bottom: 100px; /* Tambah jarak bawah biar lega */
-}
-
-/* =========================================
-   STYLE FINAL LAMAN ABOUT (FIXED LAYOUT)
-   ========================================= */
-
-/* 1. Layout Utama (Agar Pas Satu Layar) */
-.about-main {
-    /* Menggunakan Viewport Height agar pas di tengah layar laptop */
     min-height: 90vh; 
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Tengahkan Vertikal */
-    align-items: center;     /* Tengahkan Horizontal */
+    justify-content: center; 
+    align-items: center;     
     
-    padding-top: 80px; /* Kompensasi Navbar */
+    padding-top: 80px; 
     padding-bottom: 20px;
     width: 100%;
-    overflow: hidden; /* PENTING: Agar speaker gede tidak bikin scroll samping */
+    overflow: hidden; 
     position: relative;
 }
-
-/* Judul ABOUT */
 .about-title {
     max-width: 400px; 
     width: 70%;
@@ -213,8 +204,6 @@ body {
     z-index: 10;
     position: relative;
 }
-
-/* Panggung (Wadah Relatif) */
 .about-stage {
     position: relative;
     width: 90%;
@@ -224,25 +213,18 @@ body {
     justify-content: center;
     align-items: center;
 }
-
-/* --- PENGATURAN LAYER (TUMPUKAN) --- */
-
-/* KOTAK TENGAH */
 .box-wrapper {
     position: relative;
     width: 100%;
-    max-width: 800px; /* Lebar kotak */
-    z-index: 10; /* Angka Gede = Di Depan */
+    max-width: 800px; 
+    z-index: 10; 
 }
-
-/* Background Gambar Kotak */
 .bg-kotak {
     width: 100%;
     height: auto;
     display: block;
 }
 
-/* Teks Di Dalam Kotak */
 .text-overlay {
     position: absolute;
     top: 0;
@@ -252,46 +234,36 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    /* PADDING PENTING: Agar teks masuk ke dalam (tidak nabrak pinggir) */
     padding: 0 18%; 
 }
-
 .text-overlay p {
     color: white;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem; /* Ukuran font pas */
+    font-size: 1.1rem; 
     line-height: 1.5;
-    text-align: center; /* Rata tengah lebih rapi untuk desain ini */
+    text-align: center; 
     font-weight: 600;
     margin: 0;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
-
-/* --- PENGATURAN SPEAKER (DI BELAKANG) --- */
-
+/* --- PENGATURAN SPEAKER (DI BELAKANG) Untuk ABout --- */
 .speaker-float {
     position: absolute;
     z-index: 1; /* Angka Kecil = Di Belakang Kotak */
     filter: drop-shadow(0 10px 15px rgba(0,0,0,0.6));
 }
-
-/* Speaker Kiri (GEDE & MOJOK) */
 .left-sp {
     width: 300px;   
     bottom: -100px; 
     left: -150px;   
     transform: rotate(-15deg);
 }
-
-/* Speaker Kanan (RAPAT) */
 .right-sp {
     width: 300px;   
     top: -100px;     
     right: -150px;  
     transform: rotate(10deg);
 }
-/* team */
 .team-section {
   text-align: center;
   padding: 80px 40px;
@@ -578,4 +550,36 @@ body {
     /* Kecilkan speaker di HP agar layar tidak penuh */
     .left-sp { width: 120px; left: -20px; bottom: -20px; }
     .right-sp { width: 120px; right: -20px; top: -20px; }
+}
+
+/* === STYLE MUSIK PLAYER === */
+.music-player {
+    position: fixed; /* Melayang tetap di layar */
+    bottom: 30px;    /* Jarak dari bawah */
+    right: 30px;     /* Jarak dari kanan */
+    z-index: 10000;  /* Paling depan dari segalanya */
+}
+
+#musicBtn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Biar bulat */
+    background: linear-gradient(45deg, #FF0099, #493240); /* Warna pink-ungu */
+    border: 3px solid white;
+    color: white;
+    font-size: 30px; /* Ukuran emoji */
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+}
+
+#musicBtn:hover {
+    transform: scale(1.1); /* Membesar pas disentuh */
+}
+
+/* Animasi tombol goyang pas lagu nyala */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 0, 153, 0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(255, 0, 153, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 0, 153, 0); }
 }

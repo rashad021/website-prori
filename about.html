@@ -61,6 +61,77 @@
     <footer>
         <p>© PRORIENTATION 2025</p> 
     </footer>
+    
+<div class="music-player">
+        <audio id="bgMusic" loop>
+            <source src="TI/BS1.mp3" type="audio/mpeg">
+        </audio>
 
+        <button onclick="toggleAudio()" id="musicBtn" title="Play/Pause Music">
+            🔇
+        </button>
+    </div>
+
+    <script>
+        var audio = document.getElementById("bgMusic");
+        var btn = document.getElementById("musicBtn");
+
+        // --- ATUR VOLUME DI SINI ---
+        // Kita turunkan drastis ke 0.1 (10%)
+        audio.volume = 0.1; 
+        // ---------------------------
+
+        // 1. CEK MEMORI BROWSER SAAT HALAMAN DIBUKA
+        window.onload = function() {
+            var isPlaying = localStorage.getItem("musicStatus") === "true";
+            var lastTime = parseFloat(localStorage.getItem("musicTime"));
+
+            // Lompat ke detik terakhir
+            if (lastTime) {
+                audio.currentTime = lastTime;
+            }
+
+            // Coba nyalakan musik jika statusnya playing
+            if (isPlaying) {
+                var playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        btn.innerHTML = "🎵";
+                        btn.style.animation = "pulse 1.5s infinite";
+                    }).catch(error => {
+                        console.log("Autoplay dicegah browser.");
+                        btn.innerHTML = "🔇";
+                        localStorage.setItem("musicStatus", "false");
+                    });
+                }
+            }
+        };
+
+        // 2. FUNGSI TOMBOL KLIK
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = "🎵";
+                btn.style.animation = "pulse 1.5s infinite";
+                localStorage.setItem("musicStatus", "true");
+            } else {
+                audio.pause();
+                btn.innerHTML = "🔇";
+                btn.style.animation = "none";
+                localStorage.setItem("musicStatus", "false");
+            }
+        }
+
+        // 3. SIMPAN WAKTU TERUS MENERUS
+        setInterval(function() {
+            if (!audio.paused) {
+                localStorage.setItem("musicTime", audio.currentTime);
+            }
+        }, 1000);
+        
+        window.addEventListener("beforeunload", function () {
+             localStorage.setItem("musicTime", audio.currentTime);
+        });
+    </script>
 </body>
 </html>
