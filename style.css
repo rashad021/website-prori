@@ -229,86 +229,73 @@ body {
 }
 
 
-/* LAYOUT PAGE ABOUT */
-.about-main {
-    min-height: 90vh; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;     
+/* ==================================================
+   KHUSUS HALAMAN ABOUT (ADD-ON)
+   ================================================== */
+
+/* 1. MENGATUR BACKGROUND */
+body.about-page {
+    background-image: url('TI/BG ABOUT.webp'); 
     
-    padding-top: 80px; 
-    padding-bottom: 20px;
-    width: 100%;
-    overflow: hidden; 
-    position: relative;
+    /* UBAH JADI INI: */
+    background-position: center -50px; /* Fokus mulai dari tengah atas */
+    background-size: 100% auto;      /* Lebar dipaskan 100%, tinggi bebas */
+    background-attachment: scroll;   /* Ikut scroll agar gambar tidak terpotong aneh */
+    background-repeat: no-repeat;
+    background-color: #2c0e37; /* Warna cadangan (ungu gelap) kalau gambar habis di bawah */
+    min-height: 100vh;
 }
-.about-title {
-    max-width: 400px; 
-    width: 70%;
-    margin-bottom: -65px; 
-    z-index: 10;
-    position: relative;
-}
-.about-stage {
-    position: relative;
-    width: 90%;
-    max-width: 900px;
-    margin: 0 auto;
+/* 2. MENGATUR LAYOUT TENGAH */
+.about-section {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.box-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 800px; 
-    z-index: 10; 
-}
-.bg-kotak {
-    width: 100%;
-    height: auto;
-    display: block;
+    justify-content: center; /* Tengah Kiri-Kanan */
+    align-items: center;     /* Tengah Atas-Bawah */
+    min-height: 100vh;       /* Tinggi minimal seukuran layar */
+    padding-top: 35px;       /* Memberi jarak agar tidak tertutup navbar */
+    padding-bottom: 50px;
 }
 
-.text-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.content-wrapper {
+    position: relative;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 0 18%; 
+    width: 100%;
+    max-width: 900px; /* Batas lebar konten */
 }
-.text-overlay p {
-    color: white;
-    font-family: 'AplikasiFont', sans-serif;
-    font-size: 1.1rem; 
-    line-height: 1.5;
-    text-align: center; 
-    font-weight: 600;
-    margin: 0;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+
+/* 3. MENGATUR GAMBAR JUDUL (Supaya menumpuk di atas) */
+.about-title-img {
+    width: 70%; /* Ukuran judul */
+    max-width: 650px;
+    height: auto;
+    z-index: 10; /* Lapisan paling atas (Front) */
+    margin-bottom: -170px; /* MENARIK JUDUL KE BAWAH agar menimpa kotak teks */
+    transform: translateX(0px); /* Geser sedikit ke kiri sesuai desain */
 }
-/* --- PENGATURAN SPEAKER (DI BELAKANG) Untuk ABout --- */
-.speaker-float {
-    position: absolute;
-    z-index: 1; /* Angka Kecil = Di Belakang Kotak */
-    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.6));
+
+/* 4. MENGATUR GAMBAR KOTAK TEKS (Di bawah judul) */
+.about-text-img {
+    width: 85%; /* Ukuran kotak teks */
+    max-width: 800px;
+    height: auto;
+    z-index: 5; /* Lapisan di bawah judul (Back) */
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3)); /* Efek bayangan halus */
 }
-.left-sp {
-    width: 300px;   
-    bottom: -100px; 
-    left: -150px;   
-    transform: rotate(-15deg);
-}
-.right-sp {
-    width: 300px;   
-    top: -100px;     
-    right: -150px;  
-    transform: rotate(10deg);
+
+/* ==================================================
+   RESPONSIF (TAMPILAN HP)
+   ================================================== */
+@media (max-width: 768px) {
+    .about-title-img {
+        width: 70%;
+        margin-bottom: -20px; /* Kurangi tumpukan di HP */
+        transform: none; /* Hilangkan geser kiri di HP */
+    }
+    
+    .about-text-img {
+        width: 95%;
+    }
 }
 
 /* team */
