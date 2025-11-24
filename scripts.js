@@ -37,3 +37,18 @@
         document.getElementById("popup-overlay").style.display = "none";
         document.getElementById("popup-box").style.display = "none";
     }
+/* =========================================
+   TAMBAHAN: ANIMASI AOS (KHUSUS HALAMAN ABOUT)
+   ========================================= */
+
+// Kita cek dulu: "Apakah Library AOS ada di halaman ini?"
+// Kalau ada, baru jalankan animasinya. Kalau tidak ada (di halaman lain), diam saja.
+if (typeof AOS !== 'undefined') {
+    
+    AOS.init({
+        duration: 1000, /* Durasi 1 detik */
+        once: true,     /* Animasi sekali jalan */
+        offset: 100,    /* Mulai saat gambar nongol dikit */
+    });
+    
+}

@@ -6,6 +6,7 @@
     <title>About & Mascots - PRORIENTATION</title>
     <link rel="stylesheet" href="style.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="about-page">
 
@@ -25,8 +26,16 @@
 
     <section id="about-prori" class="full-screen-section about-bg">
         <div class="content-wrapper">
-            <img src="TI/ABOUT PRORI FIX.webp" alt="Judul About" class="about-title-img">
-            <img src="TI/TABEL ABOUT FIX.webp" alt="Deskripsi Prorientation" class="about-text-img">
+            <img src="TI/ABOUT PRORI FIX.webp" 
+                 alt="Judul About" 
+                 class="about-title-img"
+                 data-aos="fade-down"> 
+            
+            <img src="TI/TABEL ABOUT FIX.webp" 
+                 alt="Deskripsi Prorientation" 
+                 class="about-text-img"
+                 data-aos="fade-up"
+                 data-aos-delay="300">
         </div>
 
         <div class="scroll-btn-container bottom">
@@ -45,11 +54,34 @@
         </div>
 
         <div class="content-wrapper mascot-wrapper">
-            <img src="TI/MASCOT.webp" alt="Get to Know Mascots" class="mascot-title-img">
-            
-            <img src="TI/CION.webp" alt="Cion Description" class="mascot-card-img">
-            
-            <img src="TI/maestro g.webp" alt="Maestro G Description" class="mascot-card-img" id="maestro-g">
-        </div>
+    
+    <img src="TI/MASCOT.webp" 
+         alt="Get to Know Mascots" 
+         class="mascot-title-img"
+         data-aos="fade-down"> 
+    
+    <img src="TI/CION.webp" 
+         alt="Cion Description" 
+         class="mascot-card-img"
+         data-aos="fade-up"
+         data-aos-delay="200">
+    
+    <img src="TI/maestro g.webp" 
+         alt="Maestro G Description" 
+         class="mascot-card-img" 
+         id="maestro-g"
+         data-aos="fade-up"
+         data-aos-delay="400"
+         data-aos-offset="0"> </div> 
+    </div> </section> <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    AOS.init({
+        duration: 1000, 
+        once: true,     
+        offset: 50,     
+    });
+</script>
+
 </body>
 </html>
