@@ -634,7 +634,7 @@ html {
 }
 
 .menu button {
-    background: linear-gradient(#ff5252, #c200ff);
+    background: linear-gradient(#ef7e2b, #d92b3a);
     border: none;
     padding: 12px 25px;
     color:white;
@@ -646,7 +646,7 @@ html {
 }
 
 .link-btn {
-    background: linear-gradient(#ff5252, #c200ff);
+    background: linear-gradient(#d92b3a, #691854);
     padding: 12px 25px;
     color: white;
     text-decoration: none;
