@@ -1,38 +1,26 @@
-    const popupData = {
-        film1: {
-            title: "Tsijinema Production",
-            text: "Sabar yaa..."
-        },
-        film2: {
-            title: "Dua Kosong Production",
-            text: "Sabar yaa..."
-        },
-        film3: {
-            title: "Iyalagi Production",
-            text: "Sabar yaa..."
-        },
-        MV1: {
-            title: "The Jorts",
-            text: "Sabar yaa..."
-        },
-        MV2: {
-            title: "Charmless Pals",
-            text: "Sabar yaa..."
-        }
-    };
+// Ambil semua tombol tab
+const buttons = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".tab-content");
 
-    function showPopup(id) {
-        const data = popupData[id];
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
 
-        if (!data) return;
+        // hilangkan status aktif dari tombol lain
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
 
-        document.getElementById("popup-title").textContent = data.title;
-        document.getElementById("popup-text").textContent = data.text;
+        // tampilkan konten sesuai tombol
+        let target = btn.getAttribute("data-tab");
 
-        document.getElementById("popup-overlay").style.display = "block";
-        document.getElementById("popup-box").style.display = "block";
-    }
+        contents.forEach(content => {
+            content.classList.remove("active");
+            if(content.id === target){
+                content.classList.add("active");
+            }
+        });
 
+    });
+});
     function closePopup() {
         document.getElementById("popup-overlay").style.display = "none";
         document.getElementById("popup-box").style.display = "none";
