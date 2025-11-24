@@ -597,13 +597,14 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
+     margin-top: -10px;
 }
 
 .slides-header2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .logo-project {
@@ -1012,4 +1013,119 @@ h2 {
 @keyframes goyang {
     from { transform: rotate(-10deg); }
     to { transform: rotate(10deg); }
+}
+
+/* =========================================
+   FIXED: STYLE TRAILER POP-UP
+   ========================================= */
+
+/* =======================================================
+   STYLE POP-UP TRAILER (DENGAN ANIMASI ZOOM IN/OUT)
+   ======================================================= */
+
+/* 1. LAYAR HITAM (OVERLAY) */
+.trailer-overlay {
+    display: none;          /* Default sembunyi */
+    position: fixed;
+    z-index: 99999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center; align-items: center;
+    backdrop-filter: blur(5px);
+    
+    /* ANIMASI FADE (Gelap-Terang) */
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+}
+
+/* Saat Javascript menambahkan class 'show', layar jadi gelap */
+.trailer-overlay.show {
+    opacity: 1;
+}
+
+/* 2. KOTAK POP-UP */
+.trailer-box {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%; 
+    max-width: 800px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 4px solid #FFD700;
+    
+    /* POSISI AWAL (Kecil & Transparan) */
+    transform: scale(0.7); 
+    opacity: 0;            
+    
+    /* EFEK MEMBAL (BOUNCY) YANG HALUS */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+/* 3. SAAT MUNCUL (Class 'active' dari Javascript) */
+.trailer-box.active {
+    transform: scale(1);   /* Ukuran Normal */
+    opacity: 1;            /* Jelas */
+}
+
+/* 4. SAAT KELUAR (Class 'closing' dari Javascript) */
+.trailer-box.closing {
+    transform: scale(0.7); /* Mengecil lagi */
+    opacity: 0;            /* Menghilang */
+}
+
+
+/* --- ELEMEN PENDUKUNG LAINNYA (Biarkan Saja) --- */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0; overflow: hidden;
+    border-radius: 10px;
+    background: black;
+    border: 2px solid #eee;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+
+.trailer-close {
+    position: absolute;
+    top: 10px; right: 20px;
+    font-size: 30px; font-weight: bold; color: #aaa; cursor: pointer; z-index: 10;
+}
+.trailer-close:hover { color: #ae0001; }
+
+/* =========================================
+   ANIMASI POP-UP (MASUK & KELUAR)
+   ========================================= */
+
+/* Hapus animasi default di .trailer-box yang lama jika ada (animation: popUpBounce...) */
+/* Kita ganti dengan class manual di bawah ini */
+
+/* 1. Animasi Masuk (Zoom In) */
+.animasi-masuk {
+    animation: zoomIn 0.4s forwards ease-out;
+}
+
+/* 2. Animasi Keluar (Zoom Out) */
+.animasi-keluar {
+    animation: zoomOut 0.3s forwards ease-in;
+}
+
+/* DEFINISI KEYFRAMES */
+@keyframes zoomIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    80% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes zoomOut {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.5); opacity: 0; }
 }

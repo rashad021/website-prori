@@ -34,44 +34,59 @@
 
   <div class="container">
 
-    <!-- HEADER -->
     <div class="slides-header">
-          <img src="TI/LOGO TSJI.png " alt="logo tsiji" class="logo-project">
+         <img src="TI/LOGO TSJI.png " alt="logo tsiji" class="logo-project">
 
         <div class="title-box">
             <img src="TI/TSIIJINEMA.png " alt="tsiji" class="tulisan-project">
         </div>
 
-        <!-- BUTTON MENU -->
         <div class="slides menu">
             <button class="tab-btn active" data-tab="sinopsis">SINOPSIS</button>
             <button class="tab-btn" data-tab="credit">CREDIT</button>
-            <button class="tab-btn" data-tab="trailer">TRAILER</button>
+            
+            <button class="link-btn" onclick="openTrailer()">TRAILER</button>
+            
             <a href="https://www.instagram.com/tsijinema/" target="_blank" class="link-btn">INSTAGRAM</a>
         </div>
     </div>
 
-    <!-- CONTENT BOX -->
     <div class="content-box">
 
-        <!-- SINOPSIS -->
         <div class="tab-content active" id="sinopsis">
                 <img src="TI/tsiji synopsis.png " alt="tsiji" class="img-project">
         </div>
 
-        <!-- TRAILER -->
-        <div class="tab-content" id="trailer">
-            <h2>TRAILER</h2>
-            <p>Link tidak tersedia.</p>
-        </div>
-
-        <!-- CREDIT -->
         <div class="tab-content" id="credit">
                 <img src="TI/tsiji crdit.png " alt="tsiji" class="img-project">
         </div>
 
     </div>
 
+</div>
+
+<div id="trailerModal" class="trailer-overlay" onclick="closeTrailer()">
+    <div class="trailer-box" onclick="event.stopPropagation()">
+        
+        <span class="trailer-close" onclick="closeTrailer()">&times;</span>
+        
+        <h2 style="font-family: 'Baloo 2'; color: #ae0001; margin-bottom: 15px;">
+            OFFICIAL TRAILER
+        </h2>
+        
+        <div class="video-wrapper">
+            <iframe id="gdriveFrame" 
+                    src="" 
+                    allow="autoplay; fullscreen" 
+                    frameborder="0">
+            </iframe>
+        </div>  
+
+        <p style="margin-top: 15px; font-family: 'Montserrat'; font-size: 0.9rem;">
+            Selamat menonton!
+        </p>
+
+    </div>
 </div>
 
 <div class="project-navigation">
@@ -83,9 +98,50 @@
     </button>
 </div>
 
-</body>
-</html>
+<script>
+    // ID VIDEO GOOGLE DRIVE
+    const videoID = "17pVEhEambfyqSYtVgEpzxHxz_zrV_iF1"; 
+
+    // Fungsi Buka Trailer
+    function openTrailer() {
+        const modal = document.getElementById('trailerModal');
+        const box = document.querySelector('.trailer-box');
+        const iframe = document.getElementById('gdriveFrame');
+        
+        // Link Preview Google Drive
+        iframe.src = `https://drive.google.com/file/d/${videoID}/preview`;
+        
+        modal.style.display = "flex";
+        
+        // Animasi Masuk
+        setTimeout(() => {
+            modal.classList.add('show'); 
+            box.classList.add('active'); 
+            box.classList.remove('closing');
+        }, 10);
+    }
+
+    // Fungsi Tutup Trailer
+    function closeTrailer() {
+        const modal = document.getElementById('trailerModal');
+        const box = document.querySelector('.trailer-box');
+        const iframe = document.getElementById('gdriveFrame');
+
+        // Animasi Keluar
+        box.classList.remove('active');
+        box.classList.add('closing');
+        modal.classList.remove('show'); 
+
+        // Tunggu animasi selesai baru hilang
+        setTimeout(() => {
+            iframe.src = ""; 
+            modal.style.display = "none"; 
+            box.classList.remove('closing'); 
+        }, 400); 
+    }
+</script>
 
     <div class = "slides-background"></div>
 
 </body>
+</html>
