@@ -814,3 +814,105 @@ h2 {
         width: 50px;
     }
 }
+
+/* =========================================
+   STYLE POP-UP COMING SOON
+   ========================================= */
+
+/* 1. Layar Hitam Transparan (Overlay) */
+.cs-overlay {
+    display: none; /* Sembunyi dulu */
+    position: fixed;
+    z-index: 99999; /* Paling depan */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Hitam transparan */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Efek blur keren di belakangnya */
+}
+
+/* 2. Kotak Putihnya */
+.cs-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border: 4px solid #FFD700; /* Border emas sesuai tema */
+    
+    /* Animasi Muncul */
+    animation: popUpBounce 0.5s ease-out;
+}
+
+/* 3. Teks & Elemen */
+.cs-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+    animation: goyang 1s infinite alternate;
+}
+
+.cs-box h2 {
+    font-family: 'Baloo 2', cursive;
+    color: #ae0001; /* Warna merah gelap */
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.cs-box p {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* 4. Tombol Close (X) */
+.cs-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.cs-close:hover { color: red; }
+
+/* 5. Tombol Oke Bawah */
+.cs-btn-ok {
+    background-color: #ae0001;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+.cs-btn-ok:hover {
+    transform: scale(1.05);
+    background-color: #8a0001;
+}
+
+/* === ANIMASI === */
+
+/* Animasi Muncul Memantul (Pop Up) */
+@keyframes popUpBounce {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    80% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+/* Animasi Ikon Goyang */
+@keyframes goyang {
+    from { transform: rotate(-10deg); }
+    to { transform: rotate(10deg); }
+}

@@ -30,8 +30,88 @@
         <li><a href="team.html">Team</a></li>
       </ul>
     </nav>
-  </header>
+  </header>/
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="slides-header2">
+          <img src="TI/LOGO JORTS.png " alt="logothejorts" class="logo-project">
+
+        <div class="title-box">
+            <img src="TI/JORTS.png" alt="thejorts" class="tulisan-project2">
+        </div>
+
+        <!-- BUTTON MENU -->
+        <div class="slides menu">
+            <button class="tab-btn active" data-tab="sinopsis">SINOPSIS</button>
+            <button class="tab-btn" data-tab="credit">CREDIT</button>
+            <a href="#" onclick="openComingSoon(event)" class="link-btn">MV</a>
+            <a href="https://www.instagram.com/curiousjorts?igsh=MXMyNGw2NThnZTAzNg==" target="_blank" class="link-btn">INSTAGRAM</a>
+        </div>
+    </div>
+
+    <!-- CONTENT BOX -->
+    <div class="content-box">
+
+        <!-- SINOPSIS -->
+        <div class="tab-content active" id="sinopsis">
+                <img src="TI/sinopsis jorts.png" alt="thejorts" class="img-project2">
+        </div>
+
+        <!-- CREDIT -->
+        <div class="tab-content" id="credit">
+                <img src="TI/JORTS CREDIT.png" alt="thejorts" class="img-project2">
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>
 
     <div class = "slides-background"></div>
 
+<!-- === POP-UP COMING SOON === -->
+<div id="comingSoonModal" class="cs-overlay">
+    <div class="cs-box">
+        <!-- Tombol Close (X) -->
+        <span class="cs-close" onclick="closeComingSoon()">&times;</span>
+        
+        <!-- Ikon / Gambar (Opsional) -->
+        <div class="cs-icon">🚧</div> 
+        
+        <!-- Teks -->
+        <h2>COMING SOON!</h2>
+        <p>Video dari The Jorts sedang dalam proses editing.</p>
+        <p style="font-size: 0.9rem; color: #666;">Tunggu tanggal mainnya ya! ✨</p>
+        
+        <!-- Tombol Oke -->
+        <button onclick="closeComingSoon()" class="cs-btn-ok">Siap, Ditunggu!</button>
+    </div>
+</div>
+
+<script>
+    // Fungsi Buka Pop-Up
+    function openComingSoon(e) {
+        if(e) e.preventDefault(); // Mencegah link pindah halaman
+        const modal = document.getElementById('comingSoonModal');
+        modal.style.display = "flex"; // Munculkan
+    }
+
+    // Fungsi Tutup Pop-Up
+    function closeComingSoon() {
+        const modal = document.getElementById('comingSoonModal');
+        modal.style.display = "none"; // Sembunyikan
+    }
+
+    // Tutup kalau user klik di luar kotak putih
+    window.onclick = function(event) {
+        const modal = document.getElementById('comingSoonModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 </body>
