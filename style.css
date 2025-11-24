@@ -176,7 +176,7 @@ body {
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 .top-title:hover {
-    transform: scale(1.05); /* Membesar sedikit */
+    transform: scale(1.05) !important; /* Membesar sedikit */
     filter: drop-shadow(0 0 15px #f79b1f); /* Bayangan bersinar oranye */
 }
 
@@ -195,7 +195,8 @@ body {
     width: 210px;
     height: auto;
     filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.6));
-    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out !important, filter 0.3s ease-in-out;
+    transform: scale(1.35);
     
     /* Animasi Awal Masuk */
     opacity: 0; /* Mulai tersembunyi */
@@ -203,8 +204,8 @@ body {
 }
 
 .char:hover {
-    transform: scale(1.45) translateY(-5px); /* Membesar sedikit dan naik */
-    filter: drop-shadow(0 10px 15px rgba(255, 255, 0, 0.8)); /* Bayangan bersinar kuning */
+    transform: scale(1.45) translateY(-5px) !important; /* Membesar sedikit dan naik */
+    filter: drop-shadow(0 10px 15px rgba(255, 170, 0, 0.5)); /* Bayangan bersinar kuning */
 }
 
 /* Staggered Delay (Opsional - Asumsi ada 3 karakter) */
@@ -272,7 +273,7 @@ body {
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 .bottom-title:hover {
-    transform: scale(1.05); /* Membesar sedikit */
+    transform: scale(1.05) !important; /* Membesar sedikit */
     filter: drop-shadow(0 0 15px #df2535); /* Bayangan bersinar merah */
 }
 
