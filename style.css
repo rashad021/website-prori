@@ -540,13 +540,14 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
+     margin-top: -10px;
 }
 
 .slides-header2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .logo-project {
