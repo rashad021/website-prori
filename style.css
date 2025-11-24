@@ -139,6 +139,11 @@ body {
     animation: speakerentrykanan 0.8s forwards ease-out;
     animation-delay: 0.5s;
 }
+
+.speaker.right:hover {
+    transform: scale(1.05) translateY(-2px) !important; /* Membesar sedikit dan naik */
+    filter: drop-shadow(0 10px 15px rgba(255, 251, 0, 0.84)); /* Bayangan bersinar kuning */
+}
 .speaker.left {
     right: 70%;
     opacity: 0;
@@ -146,19 +151,17 @@ body {
     animation-delay: 0.6s;
 }
 
-
-/*  Gerakan Joget (Beat) */
-@keyframes speakerBeat {
-    0% { transform: scale(1); } /* Mulai dari ukuran normal */
-    40% { transform: scale(1.08); } /* Membesar sedikit */
-    100% { transform: scale(1); } /* Kembali normal */
+.speaker.left:hover {
+    transform: scale(1.05) translateY(-2px) !important; /* Membesar sedikit dan naik */
+    filter: drop-shadow(0 10px 15px rgba(255, 251, 0, 0.84)); /* Bayangan bersinar kuning */
 }
 
-/* Ditempel JS saat Musik Nyala */
-.speaker.joget {
-    animation: speakerBeat 1s infinite ease-in-out;
-    filter: drop-shadow(0 0 20px rgba(255, 220, 0, 0.7));
+.char.is-wiggling {
+    /* Gabungkan animasi masuk dan animasi wiggle */
+    animation: characterEntry 1s forwards ease-out, 
+               charWiggle 3s infinite ease-in-out 1.2s; 
 }
+
 
 .center-content {
   margin-top: -60px;
@@ -201,10 +204,11 @@ body {
     
     /* Animasi Awal Masuk */
     opacity: 0; /* Mulai tersembunyi */
-    animation: characterEntry 1s forwards ease-out; /* Animasi default */
+    animation: characterEntry 1s forwards ease-out;/* Animasi default */
 }
 
 .char:hover {
+   animation-play-state: paused;
     transform: scale(1.45) translateY(-5px) !important; /* Membesar sedikit dan naik */
     filter: drop-shadow(0 10px 15px rgba(255, 170, 0, 0.5)); /* Bayangan bersinar kuning */
 }
@@ -262,6 +266,13 @@ body {
         opacity: 1;
         transform: scale(1) translateY(0) rotate(0deg); /* Posisi akhir: normal */
     }
+}
+@keyframes charWiggle {
+    0% { transform: scale(1.35) rotate(0deg); }
+    25% { transform: scale(1.35) rotate(-5deg); } /* Goyang ke kiri sedikit */
+    50% { transform: scale(1.35) rotate(5deg); }  /* Goyang ke kanan sedikit */
+    75% { transform: scale(1.35) rotate(-5deg); } /* Goyang ke kiri sedikit */
+    100% { transform: scale(1.35) rotate(0deg); }
 }
 
 .bottom-title {

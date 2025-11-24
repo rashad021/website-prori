@@ -58,4 +58,52 @@
     </a>
     </div>
 </body>
+<script>
+    // 1. Ambil semua elemen yang diperlukan
+    const speakerLeft = document.querySelector('.speaker.left');
+    const speakerRight = document.querySelector('.speaker.right');
+    const characters = document.querySelectorAll('.char'); // Ambil SEMUA elemen karakter
+
+    // 2. Fungsi untuk mengaktifkan/menonaktifkan wiggle
+    function toggleWiggle(shouldWiggle) {
+        characters.forEach(char => {
+            if (shouldWiggle) {
+                // Tambahkan kelas untuk memulai wiggle
+                char.classList.add('is-wiggling');
+            } else {
+                // Hapus kelas untuk menghentikan wiggle
+                char.classList.remove('is-wiggling');
+            }
+        });
+    }
+
+    // 3. Tambahkan Event Listener ke Speaker
+
+    // Toggle: Jika sedang wiggle, matikan. Jika tidak, hidupkan.
+    let isWiggling = false; 
+
+    const speakerClickHandler = () => {
+        isWiggling = !isWiggling; // Balikkan status
+        
+        // Terapkan status baru
+        toggleWiggle(isWiggling);
+        
+        // Opsional: Tambahkan feedback visual ke speaker
+        if (isWiggling) {
+            speakerLeft.classList.add('joget'); // Gunakan kelas joget yang sudah ada
+            speakerRight.classList.add('joget'); 
+        } else {
+            speakerLeft.classList.remove('joget');
+            speakerRight.classList.remove('joget');
+        }
+    };
+
+    // Pasang handler ke kedua speaker
+    speakerLeft.addEventListener('click', speakerClickHandler);
+    speakerRight.addEventListener('click', speakerClickHandler);
+
+</script>
+
+</body>
+</html>
 </html>
