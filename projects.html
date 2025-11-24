@@ -40,24 +40,24 @@
 
         <div class="projects-stage">
             <div class = "project menu">
-                <div class = "project select" onclick ="showPopup('film1')">
-                    <img src="TI/tsijinema production.png" alt="SF 1">
-                </div>
-                <div class = "project select" onclick ="showPopup('film2')">
-                    <img src="TI/dua kosong production.png" alt="SF 2">
-                </div>
-                <div class = "project select" onclick ="showPopup('film3')">
-                    <img src="TI/iyalagi  production.png" alt="SF 3">
-                </div>
+                <a href="tsijinema.html">
+                    <img src="TI/tsijinema production.png" alt="SF 1" class="project select">
+                </a>
+                <a href="duakosong.html">
+                    <img src="TI/dua kosong production.png" alt="SF 2" class="project select">
+                </a>
+                <a href="iyalagi.html">
+                    <img src="TI/iyalagi  production.png" alt="SF 3" class="project select">
+                </a>
 
             </div>
             <div class = "project menu2">
-                <div class = "project select" onclick ="showPopup('MV1')">
-                    <img src="TI/the jorts.png" alt="Music 1">
-                </div>
-                <div class = "project select" onclick ="showPopup('MV2')">
-                    <img src="TI/charmless pals.png" alt="Music 2">
-                </div>
+                <a href="thejorts.html">
+                    <img src="TI/the jorts.png" alt="Music 1" class="project select">
+                </a>
+                <a href="charmlesspals.html">
+                    <img src="TI/charmless pals.png" alt="Music 2" class="project select">
+                </a>
 
             </div>
             <div class = "projects-background">
@@ -65,71 +65,5 @@
 
         </div>
 
-
-
-    <div class="music-player">
-        <audio id="bgMusic" loop>
-            <source src="TI/BS1.mp3" type="audio/mpeg">
-        </audio>
-
-        <button onclick="toggleAudio()" id="musicBtn" title="Play/Pause Music">
-            🔇
-        </button>
-    </div>
-
-    <script>
-        var audio = document.getElementById("bgMusic");
-        var btn = document.getElementById("musicBtn");
-        audio.volume = 0.1; 
-        window.onload = function() {
-            var isPlaying = localStorage.getItem("musicStatus") === "true";
-            var lastTime = parseFloat(localStorage.getItem("musicTime"));
-
-            // Lompat ke detik terakhir
-            if (lastTime) {
-                audio.currentTime = lastTime;
-            }
-            // Coba nyalakan musik jika statusnya playing
-            if (isPlaying) {
-                var playPromise = audio.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(_ => {
-                        btn.innerHTML = "🎵";
-                        btn.style.animation = "pulse 1.5s infinite";
-                    }).catch(error => {
-                        console.log("Autoplay dicegah browser.");
-                        btn.innerHTML = "🔇";
-                        localStorage.setItem("musicStatus", "false");
-                    });
-                }
-            }
-        };
-
-        // 2. FUNGSI TOMBOL KLIK
-        function toggleAudio() {
-            if (audio.paused) {
-                audio.play();
-                btn.innerHTML = "🎵";
-                btn.style.animation = "pulse 1.5s infinite";
-                localStorage.setItem("musicStatus", "true");
-            } else {
-                audio.pause();
-                btn.innerHTML = "🔇";
-                btn.style.animation = "none";
-                localStorage.setItem("musicStatus", "false");
-            }
-        }
-
-        // 3. SIMPAN WAKTU TERUS MENERUS
-        setInterval(function() {
-            if (!audio.paused) {
-                localStorage.setItem("musicTime", audio.currentTime);
-            }
-        }, 1000);
-        
-        window.addEventListener("beforeunload", function () {
-             localStorage.setItem("musicTime", audio.currentTime);
-        });
-    </script>
 </body>
 </html>
