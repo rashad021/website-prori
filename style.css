@@ -69,6 +69,30 @@ body {
   opacity: 0.8; /* Kembali ke opacity hover awal Anda */
   /* HAPUS: transform: scale(1.15); */
 }
+/* Update CSS Navbar agar Konsisten */
+
+.navbar, .navbar.fixed-nav {
+    /* 1. KUNCI TINGGINYA (PENTING!) */
+    /* Dengan memberi height pasti (misal 90px), browser dilarang ngatur sendiri */
+    height: 45px; 
+    
+    /* 2. HAPUS PADDING ATAS-BAWAH */
+    /* Ganti padding: 15px 50px; menjadi: */
+    padding: 0 50px; /* 0 untuk atas-bawah, 50px untuk kiri-kanan */
+
+    /* 3. PASTIKAN KONTEN DI TENGAH */
+    /* Karena kita pakai height fix, kita butuh ini biar logo & teks pas di tengah vertikal */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Pastikan ukuran Logo juga dikunci */
+.logo-nav-img {
+    height: 50px; /* Ukuran fix logo */
+    width: auto;  /* Lebar menyesuaikan biar ga gepeng */
+    display: block; /* Mencegah ada sisa spasi di bawah gambar */
+}
 
 /* ===== HERO SECTION ===== */
 .hero {
@@ -215,86 +239,180 @@ body {
 }
 
 
-/* LAYOUT PAGE ABOUT */
-.about-main {
-    min-height: 90vh; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;     
-    
-    padding-top: 80px; 
-    padding-bottom: 20px;
-    width: 100%;
-    overflow: hidden; 
-    position: relative;
-}
-.about-title {
-    max-width: 400px; 
-    width: 70%;
-    margin-bottom: -65px; 
-    z-index: 10;
-    position: relative;
-}
-.about-stage {
-    position: relative;
-    width: 90%;
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.box-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 800px; 
-    z-index: 10; 
-}
-.bg-kotak {
-    width: 100%;
-    height: auto;
-    display: block;
+/* ==================================================
+   GLOBAL & SCROLL SETTINGS
+   ================================================== */
+html {
+    scroll-behavior: smooth; /* Agar scroll otomatisnya halus */
 }
 
-.text-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+
+/* ==================================================
+   LAYOUT SECTIONS (Wadah Utama)
+   ================================================== */
+.full-screen-section {
+    min-height: 100vh;
     width: 100%;
-    height: 100%;
+    position: relative;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 0 18%; 
+    /* Padding disesuaikan dengan desainmu */
+    padding-top: 35px;       
+    padding-bottom: 50px;
+    box-sizing: border-box;
 }
-.text-overlay p {
-    color: white;
-    font-family: 'AplikasiFont', sans-serif;
-    font-size: 1.1rem; 
-    line-height: 1.5;
-    text-align: center; 
-    font-weight: 600;
-    margin: 0;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+
+.content-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
 }
-/* --- PENGATURAN SPEAKER (DI BELAKANG) Untuk ABout --- */
-.speaker-float {
+
+/* ==================================================
+   BACKGROUNDS (Dipisah per Section)
+   ================================================== */
+
+/* 1. Background Section About (Settings dari kamu) */
+.about-bg {
+    background-image: url('TI/BG ABOUT.webp'); 
+    background-position: center bottom; 
+    background-size: cover;      
+    background-attachment: scroll;   
+    background-repeat: no-repeat;
+    background-color: #2c0e37; /* Warna cadangan */
+}
+
+/* 2. Background Section Mascot (Baru) */
+.mascot-bg {
+    background-image: url('TI/BG MASCOT (CONVERTED) - Copy.webp');
+    background-position: center top;
+    background-size: 100% auto; 
+    background-repeat: no-repeat;
+    background-color: #1a0b2e;
+}
+
+/* ==================================================
+   KONTEN: ABOUT (Section 1) - Settings dari kamu
+   ================================================== */
+.about-title-img {
+    width: 70%;
+    max-width: 650px;
+    height: auto;
+    z-index: 10;
+    margin-bottom: -170px; /* Settingan kamu */
+    transform: translateX(0px);
+}
+
+.about-text-img {
+    width: 85%;
+    max-width: 800px;
+    height: auto;
+    z-index: 5;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+}
+
+/* ==================================================
+   KONTEN: MASCOTS (Section 2) - Baru
+   ================================================== */
+.mascot-wrapper {
+    gap: 100px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.mascot-title-img {
+    width: 55%;
+    max-width: 550px;
+    margin-bottom: 10px;
+    z-index: 10;
+    margin-top: -13px;
+}
+
+.mascot-card-img {
+    width: 90%;
+    max-width: 850px;
+    height: auto;
+    transition: transform 0.3s;
+    z-index: 5;
+    margin-top: -250px;
+}
+
+#maestro-g {
+    /* 1. MENGECILKAN UKURAN */
+    width: 90%;       /* Lebih kecil dari Cion (yg 90%) */
+    max-width: 740px; /* Batas maksimal dikurangi */
+
+    /* 2. MENAIKKAN POSISI */
+    /* Karena Maestro G ukurannya beda, margin-nya kita atur manual */
+    margin-top: -250px; 
+}
+
+/* === MEMOTONG BAGIAN BAWAH SECTION MASCOT === */
+#mascots {
+    /* Ubah dari full-screen (100vh) menjadi auto (sesuai isi) */
+    min-height: auto !important; 
+    
+    /* Atur jarak sisa di bawah Maestro G (sesuaikan selera) */
+    padding-bottom: 12px; 
+}
+
+
+/* 1. SECTION UTAMA (Agar posisi absolute tombol akurat) */
+.full-screen-section {
+    position: relative;
+    /* Pastikan padding cukup agar konten tidak nabrak tombol */
+    padding-bottom: 100px; 
+}
+
+
+/* 3. TOMBOL TURUN (DI ATAS TOMBOL MUSIK) */
+/* Hanya muncul di Section 1, posisinya di atas musik */
+.scroll-btn-container.bottom {
     position: absolute;
-    z-index: 1; /* Angka Kecil = Di Belakang Kotak */
-    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.6));
+    bottom: 110px;        /* Jarak 110px agar berada DI ATAS musik (30px + 60px + gap) */
+    right: 40px;          /* Sejajar vertikal dengan musik */
+    left: auto;           /* Reset posisi kiri */
+    z-index: 20;
 }
-.left-sp {
-    width: 300px;   
-    bottom: -100px; 
-    left: -150px;   
-    transform: rotate(-15deg);
+
+/* 4. TOMBOL NAIK (POJOK KANAN ATAS SECTION 2) */
+.scroll-btn-container.top-spacer {
+    position: absolute;
+    top: 80px;           /* Di bawah Navbar */
+    right: 40px;          /* Di pojok KANAN */
+    margin: 0;
+    z-index: 20;
 }
-.right-sp {
-    width: 300px;   
-    top: -100px;     
-    right: -150px;  
-    transform: rotate(10deg);
+.nav-btn-img {
+    width: 60px;  
+    height: auto; 
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7));
+}
+
+/* ==================================================
+   RESPONSIF (HP)
+   ================================================== */
+@media (max-width: 768px) {
+    /* About Mobile */
+    .about-title-img {
+        width: 70%;
+        margin-bottom: -20px; 
+        transform: none;
+    }
+    .about-text-img {
+        width: 95%;
+    }
+
+    /* Mascot Mobile */
+    .mascot-title-img { width: 70%; }
+    .mascot-card-img { width: 95%; }
+    
+    /* Tombol Mobile */
+    .scroll-btn-container.bottom { bottom: 80px; }
 }
 
 /* ------------------------------
@@ -540,21 +658,21 @@ h2 {
 .title-team {
   width: 600px; 
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 60px;
   display: block;
   margin-bottom: -40px;   
 }
 
 /* Main member */
 .avatar-main {
-  width: 280px;
+  width: 300px;
   display: block;
   margin: 0 auto 20px;
 }
 
 /* ROW MEMBERS */
 .team-list {
-  margin-top: -100px;
+  margin-top: -85px;
   display: flex;
   justify-content: center;
   gap: 0px;    
@@ -563,11 +681,59 @@ h2 {
 
 /* Member kecil */
 .member img {
-  width: 230px;
+  width: 250px;
   display: flex;
-  margin-top: 30px;
+  margin-top: 20;
 }
 
+.team-section * {
+  position: relative;
+  z-index: 10;
+}
+
+.main-member a,
+.member a {
+  display: inline-block;
+  width: fit-content;
+}
+
+.team-section * {
+  position: relative;
+  z-index: 10;
+}
+
+/* Untuk member kecil */
+.member img {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.member img:hover {
+  transform: scale(1.08); 
+}
+
+/* Untuk karakter utama juga */
+.avatar-main {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.main-member a,
+.member a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-main:hover {
+  transform: scale(1.1);
+}
+
+/* Hilangkan jarak default dari gambar judul */
+.title-team {
+  margin-top: 0 !important;
+  padding-top: 80px;   /* kasih sedikit biar tidak terlalu nempel */
+}
 
 /* --- RESPONSIVE (HP) --- */
 @media (max-width: 768px) {
@@ -605,36 +771,4 @@ h2 {
     /* Kecilkan speaker di HP agar layar tidak penuh */
     .left-sp { width: 120px; left: -20px; bottom: -20px; }
     .right-sp { width: 120px; right: -20px; top: -20px; }
-}
-
-/* === STYLE MUSIK PLAYER === */
-.music-player {
-    position: fixed; /* Melayang tetap di layar */
-    bottom: 30px;    /* Jarak dari bawah */
-    right: 30px;     /* Jarak dari kanan */
-    z-index: 10000;  /* Paling depan dari segalanya */
-}
-
-#musicBtn {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%; /* Biar bulat */
-    background: linear-gradient(45deg, #FF0099, #493240); /* Warna pink-ungu */
-    border: 3px solid white;
-    color: white;
-    font-size: 30px; /* Ukuran emoji */
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    transition: transform 0.3s;
-}
-
-#musicBtn:hover {
-    transform: scale(1.1); /* Membesar pas disentuh */
-}
-
-/* Animasi tombol goyang pas lagu nyala */
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255, 0, 153, 0.7); }
-    70% { box-shadow: 0 0 0 20px rgba(255, 0, 153, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 0, 153, 0); }
 }

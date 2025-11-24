@@ -39,115 +39,43 @@
 
     <!-- MAIN MEMBER -->
     <div class="main-member">
-    <a href="https://instagram.com/kayishe" target="_blank">
-        <img src="TI/KAYE.png" class="avatar-main">
-    </a>
+        <a href="https://instagram.com/kayishe" target="_blank">
+            <img src="TI/KAYE.png" class="avatar-main">
+        </a>
     </div>
 
     <!-- OTHER MEMBERS -->
     <div class="team-list">
-        <div class="member">
-    <a href="https://instagram.com/dzlkra" target="_blank">
-        <img src="TI/DZ.png">
-    </a>
+    <div class="member">
+        <a href="https://instagram.com/dzlkra" target="_blank">
+            <img src="TI/DZ.png">
+        </a>
     </div>
 
     <div class="member">
-    <a href="https://instagram.com/aletheiarachel" target="_blank">
-        <img src="TI/RACHEL.png">
-    </a>
+        <a href="https://instagram.com/aletheiarachel" target="_blank">
+            <img src="TI/RACHEL.png">
+        </a>
     </div>
 
     <div class="member">
-    <a href="https://instagram.com/klvn.k" target="_blank">
-        <img src="TI/KOTJEK.png">
-    </a>
+        <a href="https://instagram.com/klvn.k" target="_blank">
+            <img src="TI/KOTJEK.png">
+        </a>
     </div>
 
     <div class="member">
-    <a href="https://instagram.com/jjuwann" target="_blank">
-        <img src="TI/JUAN.png">
-    </a>
+        <a href="https://instagram.com/jjuwann" target="_blank">
+            <img src="TI/JUAN.png">
+        </a>
     </div>
 
     <div class="member">
         <a href="https://instagram.com/a.acadd" target="_blank">
             <img src="TI/RASHAD.png">
-    </a>
-    </div>
-    
-    </div>
-</section>
-
-<!-- MUSIC -->
-<div class="music-player">
-        <audio id="bgMusic" loop>
-            <source src="TI/BS1.mp3" type="audio/mpeg">
-        </audio>
-
-        <button onclick="toggleAudio()" id="musicBtn" title="Play/Pause Music">
-            🔇
-        </button>
+        </a>
     </div>
 
-    <script>
-        var audio = document.getElementById("bgMusic");
-        var btn = document.getElementById("musicBtn");
-
-        audio.volume = 0.1; 
-       
-        // 1. CEK MEMORI BROWSER SAAT HALAMAN DIBUKA
-        window.onload = function() {
-            var isPlaying = localStorage.getItem("musicStatus") === "true";
-            var lastTime = parseFloat(localStorage.getItem("musicTime"));
-
-            // Lompat ke detik terakhir
-            if (lastTime) {
-                audio.currentTime = lastTime;
-            }
-
-            // Coba nyalakan musik jika statusnya playing
-            if (isPlaying) {
-                var playPromise = audio.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(_ => {
-                        btn.innerHTML = "🎵";
-                        btn.style.animation = "pulse 1.5s infinite";
-                    }).catch(error => {
-                        console.log("Autoplay dicegah browser.");
-                        btn.innerHTML = "🔇";
-                        localStorage.setItem("musicStatus", "false");
-                    });
-                }
-            }
-        };
-
-        // 2. FUNGSI TOMBOL KLIK
-        function toggleAudio() {
-            if (audio.paused) {
-                audio.play();
-                btn.innerHTML = "🎵";
-                btn.style.animation = "pulse 1.5s infinite";
-                localStorage.setItem("musicStatus", "true");
-            } else {
-                audio.pause();
-                btn.innerHTML = "🔇";
-                btn.style.animation = "none";
-                localStorage.setItem("musicStatus", "false");
-            }
-        }
-
-        // 3. SIMPAN WAKTU TERUS MENERUS
-        setInterval(function() {
-            if (!audio.paused) {
-                localStorage.setItem("musicTime", audio.currentTime);
-            }
-        }, 1000);
-        
-        window.addEventListener("beforeunload", function () {
-             localStorage.setItem("musicTime", audio.currentTime);
-        });
-    </script>
-    
+    </div>
 </body>
 </html>
