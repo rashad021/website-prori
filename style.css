@@ -64,12 +64,22 @@ body {
   font-weight: 600;
 }
 
-
-.navbar a:hover {
-  opacity: 0.8; /* Kembali ke opacity hover awal Anda */
-  /* HAPUS: transform: scale(1.15); */
+.navbar ul li a {
+    opacity: 0.5; /* Atur tingkat redup (misalnya 50% transparan) */
+    transition: opacity 0.3s ease; /* Tambahkan transisi agar halus saat hover */
 }
-/* Update CSS Navbar agar Konsisten */
+
+/* Menonjolkan tautan yang sedang aktif */
+.navbar ul li a.active-link {
+    opacity: 1.0; /* Opacity penuh (tidak diredupkan) */
+    /* Opsional: Tambahkan efek visual lain seperti tebal atau warna berbeda */
+    font-weight: 600; 
+}
+
+.navbar ul li a:hover {
+    /* Semua tautan menjadi cerah saat di-hover */
+    opacity: 1.0; 
+}
 
 .navbar, .navbar.fixed-nav {
     /* 1. KUNCI TINGGINYA (PENTING!) */
@@ -379,6 +389,7 @@ html {
     margin-bottom: 10px;
     z-index: 10;
     margin-top: -13px;
+    
 }
 
 .mascot-card-img {
@@ -388,6 +399,7 @@ html {
     transition: transform 0.3s;
     z-index: 5;
     margin-top: -250px;
+    will-change: transform, opacity;
 }
 
 #maestro-g {
@@ -402,11 +414,11 @@ html {
 
 /* === MEMOTONG BAGIAN BAWAH SECTION MASCOT === */
 #mascots {
-    /* Ubah dari full-screen (100vh) menjadi auto (sesuai isi) */
-    min-height: auto !important; 
-    
-    /* Atur jarak sisa di bawah Maestro G (sesuaikan selera) */
-    padding-bottom: 12px; 
+    margin-top: -50px; 
+    /* 2. Menggeser konten di dalam Mascots ke bawah agar tidak terpotong */
+    padding-top: 80px; 
+    /* Pastikan padding-bottom ini tetap ada jika Anda ingin sisa ruang di bawah Maestro G */
+    padding-bottom: 12px;
 }
 
 
@@ -414,7 +426,7 @@ html {
 .full-screen-section {
     position: relative;
     /* Pastikan padding cukup agar konten tidak nabrak tombol */
-    padding-bottom: 100px; 
+    padding-bottom: 130px; 
 }
 
 
@@ -431,8 +443,8 @@ html {
 /* 4. TOMBOL NAIK (POJOK KANAN ATAS SECTION 2) */
 .scroll-btn-container.top-spacer {
     position: absolute;
-    top: 80px;           /* Di bawah Navbar */
-    right: 40px;          /* Di pojok KANAN */
+    top: 130px; /* 80px (default) + 50px (kompensasi) = 130px */
+    right: 40px;         /* Di pojok KANAN */
     margin: 0;
     z-index: 20;
 }
