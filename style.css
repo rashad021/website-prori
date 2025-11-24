@@ -343,14 +343,6 @@ html {
     background-color: #2c0e37; /* Warna cadangan */
 }
 
-/* 2. Background Section Mascot (Baru) */
-.mascot-bg {
-    background-image: url('TI/BG MASCOT (CONVERTED) - Copy.webp');
-    background-position: center top;
-    background-size: 100% auto; 
-    background-repeat: no-repeat;
-    background-color: #1a0b2e;
-}
 
 /* ==================================================
    KONTEN: ABOUT (Section 1) - Settings dari kamu
@@ -1128,4 +1120,32 @@ h2 {
 @keyframes zoomOut {
     0% { transform: scale(1); opacity: 1; }
     100% { transform: scale(0.5); opacity: 0; }
+}
+
+/* Mengurangi jarak kosong di bawah Maestro G */
+#mascots {
+    padding-bottom: 0px !important; /* Hilangkan padding bawah */
+    min-height: auto !important;    /* Tinggi menyesuaikan isi */
+}
+
+/* Update CSS untuk Mascot Background */
+.mascot-bg {
+    /* Pastikan path gambarnya benar */
+    background-image: url('TI/BG MASCOT (CONVERTED) - Copy.webp');
+    
+    background-position: center center;
+    background-size: cover; /* Memastikan gambar memenuhi layar */
+    
+    /* --- INI JURUS KUNCINYA --- */
+    background-attachment: fixed; /* Gambar akan dipaku di layar (tidak ikut scroll) */
+    /* -------------------------- */
+    
+    background-repeat: no-repeat;
+    
+    /* Pastikan tinggi minimalnya full screen */
+    min-height: 100vh; 
+    
+    /* Reset margin/padding agar tidak ada celah */
+    margin: 0;
+    padding-bottom: 50px; /* Jarak aman di bawah konten */
 }
