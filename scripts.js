@@ -21,10 +21,7 @@ buttons.forEach(btn => {
 
     });
 });
-    function closePopup() {
-        document.getElementById("popup-overlay").style.display = "none";
-        document.getElementById("popup-box").style.display = "none";
-    }
+
 /* =========================================
    TAMBAHAN: ANIMASI AOS (KHUSUS HALAMAN ABOUT)
    ========================================= */
