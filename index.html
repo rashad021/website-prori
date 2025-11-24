@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+ 
+    <audio id="musicPlayer" src="audio/Happy Monday.mp3" preload="auto" loop></audio>
+    
     
   
   <!-- NAVBAR -->
@@ -59,50 +62,115 @@
     </div>
 </body>
 <script>
-    // 1. Ambil semua elemen yang diperlukan
+    // === 1. KONSTANTA DAN AMBIL ELEMEN ===
     const speakerLeft = document.querySelector('.speaker.left');
     const speakerRight = document.querySelector('.speaker.right');
-    const characters = document.querySelectorAll('.char'); // Ambil SEMUA elemen karakter
+    const characters = document.querySelectorAll('.char'); 
+    const musicPlayer = document.getElementById('musicPlayer'); // Pastikan <audio id="musicPlayer"> ada di HTML
+    
+    // Kunci untuk menyimpan status di browser (localStorage)
+    const MUSIC_KEY = 'musicStatus';       // 'playing' atau 'paused'
+    const TIME_KEY = 'musicCurrentTime';   // Detik terakhir lagu
+    
+    // === 2. FUNGSI UTILITY ===
 
-    // 2. Fungsi untuk mengaktifkan/menonaktifkan wiggle
+    // Fungsi untuk mengaktifkan/menonaktifkan wiggle pada karakter
     function toggleWiggle(shouldWiggle) {
         characters.forEach(char => {
-            if (shouldWiggle) {
-                // Tambahkan kelas untuk memulai wiggle
-                char.classList.add('is-wiggling');
-            } else {
-                // Hapus kelas untuk menghentikan wiggle
-                char.classList.remove('is-wiggling');
-            }
+            // Menggunakan classList.toggle untuk memudahkan
+            char.classList.toggle('is-wiggling', shouldWiggle);
         });
     }
 
-    // 3. Tambahkan Event Listener ke Speaker
+    // Fungsi untuk menerapkan status visual speaker dan karakter (dipanggil saat dimuat atau diklik)
+    function applyStatus(status) {
+        const isPlaying = (status === 'playing');
+        
+        // Terapkan wiggle pada karakter
+        toggleWiggle(isPlaying); 
 
-    // Toggle: Jika sedang wiggle, matikan. Jika tidak, hidupkan.
-    let isWiggling = false; 
+        // Terapkan efek joget pada speaker (hanya jika elemen speaker ada di halaman ini)
+        if (speakerLeft && speakerRight) {
+            speakerLeft.classList.toggle('joget', isPlaying);
+            speakerRight.classList.toggle('joget', isPlaying);
+        }
+    }
 
+
+    // === 3. HANDLER UTAMA (Saat Speaker Diklik) ===
     const speakerClickHandler = () => {
-        isWiggling = !isWiggling; // Balikkan status
+        const currentStatus = localStorage.getItem(MUSIC_KEY);
         
-        // Terapkan status baru
-        toggleWiggle(isWiggling);
-        
-        // Opsional: Tambahkan feedback visual ke speaker
-        if (isWiggling) {
-            speakerLeft.classList.add('joget'); // Gunakan kelas joget yang sudah ada
-            speakerRight.classList.add('joget'); 
+        if (currentStatus === 'playing') {
+            // --- MATIKAN ---
+            musicPlayer.pause();
+            musicPlayer.currentTime = 0; // Atur ulang ke detik 0
+            localStorage.setItem(MUSIC_KEY, 'paused');
+            localStorage.removeItem(TIME_KEY); // Hapus waktu tersimpan jika dihentikan total
+            applyStatus('paused');
         } else {
-            speakerLeft.classList.remove('joget');
-            speakerRight.classList.remove('joget');
+            // --- HIDUPKAN ---
+            // Coba putar lagu. play() mengembalikan Promise.
+            musicPlayer.play().then(() => {
+                // Berhasil putar, update status
+                localStorage.setItem(MUSIC_KEY, 'playing');
+                applyStatus('playing');
+            }).catch(e => {
+                // Jika browser memblokir (misalnya di halaman baru tanpa interaksi)
+                console.error("Gagal memutar audio: ", e);
+                localStorage.setItem(MUSIC_KEY, 'paused');
+                applyStatus('paused');
+            });
         }
     };
 
-    // Pasang handler ke kedua speaker
-    speakerLeft.addEventListener('click', speakerClickHandler);
-    speakerRight.addEventListener('click', speakerClickHandler);
 
-</script>
+    // === 4. SINKRONISASI LINTAS HALAMAN ===
+
+    // Menyimpan currentTime dan status saat pengguna meninggalkan halaman
+    window.addEventListener('beforeunload', () => {
+        // Hanya simpan waktu jika lagu sedang diputar
+        if (musicPlayer && musicPlayer.paused === false) { 
+            localStorage.setItem(TIME_KEY, musicPlayer.currentTime);
+        }
+    });
+
+    // Inisialisasi Saat Halaman Dimuat
+    window.addEventListener('load', () => {
+        const savedStatus = localStorage.getItem(MUSIC_KEY);
+        const savedTime = localStorage.getItem(TIME_KEY); 
+        
+        if (savedStatus === 'playing') {
+            
+            // 1. Atur posisi lagu dari waktu yang tersimpan
+            if (savedTime !== null && musicPlayer) {
+                // parseFloat untuk memastikan nilai string yang tersimpan diubah menjadi angka
+                musicPlayer.currentTime = parseFloat(savedTime); 
+            }
+
+            // 2. Coba putar lagu untuk melanjutkan
+            if (musicPlayer) {
+                musicPlayer.play().then(() => {
+                    applyStatus('playing');
+                }).catch(e => {
+                    console.warn("Autoplay diblokir di halaman baru. Musik dihentikan.", e);
+                    // Jika diblokir, atur status kembali ke 'paused'
+                    localStorage.setItem(MUSIC_KEY, 'paused'); 
+                    applyStatus('paused');
+                });
+            }
+        } else {
+             // Jika statusnya 'paused', pastikan visual juga paused
+             applyStatus('paused');
+        }
+
+        // 3. Pasang Event Listener (Hanya jika speaker ada di halaman ini)
+        if (speakerLeft && speakerRight) {
+            speakerLeft.addEventListener('click', speakerClickHandler);
+            speakerRight.addEventListener('click', speakerClickHandler);
+        }
+    });
+</script>>
 
 </body>
 </html>

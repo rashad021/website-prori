@@ -96,3 +96,4 @@ document.addEventListener('DOMContentLoaded', () => {
         nextButton.disabled = currentIndex === projects.length - 1;
     }
 });
+
