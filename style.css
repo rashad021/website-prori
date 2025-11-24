@@ -156,7 +156,6 @@ body {
     filter: drop-shadow(0 10px 15px rgba(255, 251, 0, 0.84)); /* Bayangan bersinar kuning */
 }
 
-
 .char.is-wiggling {
     /* Gabungkan animasi masuk dan animasi wiggle */
     animation: characterEntry 1s forwards ease-out, 
