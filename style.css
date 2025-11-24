@@ -177,7 +177,7 @@ body {
 }
 .top-title:hover {
     transform: scale(1.05) !important; /* Membesar sedikit */
-    filter: drop-shadow(0 0 15px #f79b1f); /* Bayangan bersinar oranye */
+    filter: drop-shadow(0 0 15px #be1ff768); /* Bayangan bersinar oranye */
 }
 
 .characters {
