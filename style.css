@@ -547,7 +547,7 @@ html {
     height: 100%;
     z-index: -1;          /* supaya berada di belakang semua konten */
     
-    background-image: url("TI/bg\ prject.png");
+    background-image: url("TI/bg\ prject.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -564,7 +564,7 @@ html {
     height: 100%;
     z-index: -1;          /* supaya berada di belakang semua konten */
     
-    background-image: url("TI/BG\ PROJECTS\ PERSLIDE.png");
+    background-image: url("TI/BG\ PROJECTS\ PERSLIDE.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -681,7 +681,47 @@ h2 {
     font-size: 32px;
     text-shadow: 2px 2px #000;
 }
+.project-navigation {
+    position: fixed; /* Membuat panah tetap di posisi yang sama saat di-scroll */
+    top: 50%; /* Posisikan di tengah vertikal */
+    left: 0; /* Panah kiri di sebelah kiri layar */
+    right: 0; /* Panah kanan di sebelah kanan layar */
+    transform: translateY(-50%); /* Penyesuaian agar benar-benar di tengah */
+    display: flex;
+    justify-content: space-between; /* Untuk memisahkan panah kiri dan kanan */
+    padding: 0 20px; /* Sedikit padding dari tepi layar */
+    z-index: 1000; /* Pastikan panah berada di atas konten lain */
+}
 
+.nav-button {
+    background: none; /* Hilangkan latar belakang tombol */
+    border: none; /* Hilangkan border tombol */
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button img {
+    width: 35px; /* Sesuaikan ukuran gambar panah sesuai keinginan */
+    height: 35px; /* Sesuaikan ukuran gambar panah sesuai keinginan */
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.4)); /* Efek shadow untuk membuat lebih menonjol */
+    transition: transform 0.2s ease-in-out;
+}
+
+.nav-button:hover img {
+    transform: scale(1.1); /* Efek saat di-hover */
+}
+
+/* Penyesuaian untuk tampilan mobile jika diperlukan */
+@media (max-width: 768px) {
+    .nav-button img {
+        width: 40px;
+        height: 40px;
+    }
+}
 
 /* team */
 .team-section {
