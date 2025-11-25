@@ -39,60 +39,72 @@ if (typeof AOS !== 'undefined') {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Pastikan kita mendapatkan elemen, dan jika tidak ada, biarkan null.
     const prevButton = document.querySelector('.prev-project');
     const nextButton = document.querySelector('.next-project');
 
-    // Contoh array ID atau nama proyek Anda
     const projects = [
-        'tsijinema',
+        'tsijinema', // Pastikan nama ini sesuai dengan bagian awal nama file HTML Anda
         'duakosong',
         'iyalagi',
         'thejorts',
         'charmlesspals'
     ];
 
-    // Fungsi untuk mendapatkan ID proyek saat ini dari URL (misalnya, 'tsijinema.html')
     function getCurrentProjectId() {
         const path = window.location.pathname;
-        const filename = path.split('/').pop(); // Mendapatkan 'tsijinema.html'
-        return filename.split('.')[0]; // Mendapatkan 'tsijinema'
+        const filename = path.split('/').pop();
+        return filename.split('.')[0];
     }
 
     let currentIndex = projects.indexOf(getCurrentProjectId());
 
-    // Fungsi untuk menavigasi ke proyek sebelumnya
-    prevButton.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            window.location.href = `${projects[currentIndex]}.html`; // Sesuaikan format URL Anda
-        } else {
-            // Opsional: navigasi ke proyek terakhir jika sudah di awal
-            // currentIndex = projects.length - 1;
-            // window.location.href = `${projects[currentIndex]}.html`;
-            alert('Ini adalah proyek pertama!'); // Atau tampilkan notifikasi lain
+    // --- Tambahan / Perbaikan Logika ---
+
+    // Fungsi untuk mengupdate status tombol
+    function updateButtonStates() {
+        if (prevButton) { // Hanya update jika tombol ada di DOM
+            prevButton.disabled = currentIndex === 0;
+            // Jika Anda ingin menyembunyikan, bukan hanya menonaktifkan
+            prevButton.style.visibility = (currentIndex === 0) ? 'hidden' : 'visible';
         }
-    });
-
-    // Fungsi untuk menavigasi ke proyek selanjutnya
-    nextButton.addEventListener('click', () => {
-        if (currentIndex < projects.length - 1) {
-            currentIndex++;
-            window.location.href = `${projects[currentIndex]}.html`; // Sesuaikan format URL Anda
-        } else {
-            // Opsional: navigasi ke proyek pertama jika sudah di akhir
-            // currentIndex = 0;
-            // window.location.href = `${projects[currentIndex]}.html`;
-            alert('Ini adalah proyek terakhir!'); // Atau tampilkan notifikasi lain
+        if (nextButton) { // Hanya update jika tombol ada di DOM
+            nextButton.disabled = currentIndex === projects.length - 1;
+            // Jika Anda ingin menyembunyikan, bukan hanya menonaktifkan
+            nextButton.style.visibility = (currentIndex === projects.length - 1) ? 'hidden' : 'visible';
         }
-    });
+    }
 
+    // Panggil updateButtonStates saat halaman dimuat
+    updateButtonStates();
 
-    // Sembunyikan panah jika hanya ada satu proyek atau di luar halaman proyek
+    // Event listener untuk tombol Previous
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                window.location.href = `${projects[currentIndex]}.html`;
+            }
+        });
+    }
+
+    // Event listener untuk tombol Next
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < projects.length - 1) {
+                currentIndex++;
+                window.location.href = `${projects[currentIndex]}.html`;
+            } else {
+                alert('Ini adalah proyek terakhir!');
+            }
+        });
+    }
+
+    // Opsional: Sembunyikan seluruh container navigasi jika tidak relevan
     if (projects.length <= 1 || currentIndex === -1) {
-        document.querySelector('.project-navigation').style.display = 'none';
-    } else {
-        // Atur status tombol (nonaktifkan jika di awal/akhir)
-        prevButton.disabled = currentIndex === 0;
-        nextButton.disabled = currentIndex === projects.length - 1;
+        const navContainer = document.querySelector('.project-navigation');
+        if (navContainer) {
+            navContainer.style.display = 'none';
+        }
     }
 });

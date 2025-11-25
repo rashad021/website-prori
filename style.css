@@ -670,6 +670,7 @@ html {
     border-radius: 20px;
     text-align: center;
     transition: 0.3s;
+    z-index: 1000;
 }
 
 .link-btn:hover {
@@ -723,7 +724,7 @@ h2 {
     display: flex;
     justify-content: space-between; /* Untuk memisahkan panah kiri dan kanan */
     padding: 0 20px; /* Sedikit padding dari tepi layar */
-    z-index: 1000; /* Pastikan panah berada di atas konten lain */
+    z-index: 10; /* Pastikan panah berada di atas konten lain */
 }
 
 .nav-button {
